@@ -5,4 +5,16 @@
     <fullyQualifiedTypeName name="oopWithNLayeredApp.entities.Product"/>
     <fullyQualifiedTypeName name="oopWithNLayeredApp.dataAccess.ProductDao"/>
     <fullyQualifiedTypeName name="oopWithNLayeredApp.dataAccess.JdbcProductDao"/>
+    <fullyQualifiedTypeName name="oopWithNLayeredApp.core.Logger"/>
+    <fullyQualifiedTypeName name="oopWithNLayeredApp.core.FileLogger"/>
+    <fullyQualifiedTypeName name="oopWithNLayeredApp.core.DatabaseLogger"/>
+    <fullyQualifiedTypeName name="kodlamaio.entities.Entity"/>
+    <fullyQualifiedTypeName name="kodlamaio.dataAccess.EntityDao"/>
+    <fullyQualifiedTypeName name="kodlamaio.entities.Trainer"/>
+    <fullyQualifiedTypeName name="kodlamaio.entities.Category"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="kodlamaio.business.CourseManager"/>
+    <fullyQualifiedTypeName name="kodlamaio.core.SMSLogger"/>
+    <fullyQualifiedTypeName name="kodlamaio.core.Logger"/>
+    <fullyQualifiedTypeName name="kodlamaio.entities.Course"/>
 </qualifiedTypeNameHistroy>
