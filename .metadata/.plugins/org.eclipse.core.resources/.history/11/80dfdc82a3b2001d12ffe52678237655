@@ -1,0 +1,19 @@
+package oopWithNLayeredApp;
+
+import oopWithNLayeredApp.business.ProductManager;
+import oopWithNLayeredApp.entities.Product;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		
+		//ürün ekleme
+		Product product1 = new Product(1,"samsung", 9);
+		
+		//veritabanına kaydetme
+		ProductManager productManager = new ProductManager();
+		productManager.add(product1);
+		
+	}
+
+}

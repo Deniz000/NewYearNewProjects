@@ -1,0 +1,35 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Product product1 = new Product();
+		product1.name = "Vıttırı";
+		product1.discount = 3;
+		product1.imageurl = "x1.url";
+		product1.unitPrice = 2000;
+		product1.unitsInStock = 500;
+		
+		Product product2 = new Product();
+		product2.name = "vızzık";
+		product2.discount = 3;
+		product2.imageurl = "x2.url";
+		product2.unitPrice = 2400;
+		product2.unitsInStock = 100;
+		
+		
+		Product[] products = {product1,product2};
+		
+		for(Product product : products) {
+			System.out.println(product.name);
+		}
+		
+		
+		
+
+		
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+
+public class Product {
+ 
+	//field
+	private String name;
+	private double unitPrice;
+	private double discount;
+	private String imageurl;
+	private int unitsInStock;
+	
+	
+}
