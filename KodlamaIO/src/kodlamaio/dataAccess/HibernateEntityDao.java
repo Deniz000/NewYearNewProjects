@@ -9,7 +9,7 @@ public class HibernateEntityDao implements EntityDao{
 	@Override
 	public void addCourse(Course course) {
 		// TODO Auto-generated method stub
-		System.out.println("Hibernate " + course );
+		System.out.println("Hibernate ile eklendi. Kurs : " + course.getName() );
 	}
 
 	@Override
