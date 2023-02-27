@@ -12,9 +12,10 @@
     <fullyQualifiedTypeName name="kodlamaio.dataAccess.EntityDao"/>
     <fullyQualifiedTypeName name="kodlamaio.entities.Trainer"/>
     <fullyQualifiedTypeName name="kodlamaio.entities.Category"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="kodlamaio.business.CourseManager"/>
     <fullyQualifiedTypeName name="kodlamaio.core.SMSLogger"/>
     <fullyQualifiedTypeName name="kodlamaio.core.Logger"/>
     <fullyQualifiedTypeName name="kodlamaio.entities.Course"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
