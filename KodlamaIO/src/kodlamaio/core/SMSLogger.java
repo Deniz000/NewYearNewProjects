@@ -3,9 +3,10 @@ package kodlamaio.core;
 public class SMSLogger implements Logger{
 
 	@Override
-	public void log(String data) {
-		// TODO Auto-generated method stub
-		System.out.println("sms gönderildi");
+	public void log(String message) {
+		System.out.println("sms gönderildi ");
+		System.out.println();
+
 	}
 
 }

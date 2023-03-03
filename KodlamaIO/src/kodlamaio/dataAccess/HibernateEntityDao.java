@@ -10,6 +10,7 @@ public class HibernateEntityDao implements EntityDao{
 	public void addCourse(Course course) {
 		// TODO Auto-generated method stub
 		System.out.println("Hibernate ile eklendi. Kurs : " + course.getName() );
+		System.out.println();
 	}
 
 	@Override
@@ -22,7 +23,8 @@ public class HibernateEntityDao implements EntityDao{
 	@Override
 	public void addCategory(Category category) {
 		// TODO Auto-generated method stub
-		System.out.println("Hibernate " + category );
+		System.out.println("Hibernate ile eklendi. Kategori : " + category.getName() );
+		System.out.println();
 
 	}
 
