@@ -8,11 +8,14 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="gü"/>
+			<item value="Sms bilgisi almak"/>
 			<item value="&#x0A;&#x09;&#x09;&#x0A;&#x09;&#x09;if(courses == null || !courses.contains(course)) {&#x0A;&#x09;&#x09;&#x09;courses.add(course);&#x0A;&#x09;&#x09;}&#x0A;&#x09;&#x09;else {&#x0A;&#x09;&#x09;&#x09;throw new Exception(&quot;Aynı kursu birden fazla kez ekleyemezsiniz&quot;);&#x0A;&#x09;&#x09;&#x09;&#x0A;&#x09;&#x09;}&#x0A;"/>
 			<item value="this.courses"/>
 			<item value="conver"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

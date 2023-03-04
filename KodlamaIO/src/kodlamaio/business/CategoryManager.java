@@ -41,9 +41,7 @@ public class CategoryManager {
 		for(Logger log : logs) {
 			log.log(category.getName().toString());
 		}
-		System.out.println(category.getName() + " Eklendi ");
 	
-		//System.out.print(category.getName());
 		
 	}
 

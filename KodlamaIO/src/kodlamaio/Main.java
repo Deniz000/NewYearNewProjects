@@ -42,24 +42,6 @@ public class Main {
 		  categoryManager.add(category); categoryManager.add(category2);
 		  categoryManager.add(category3);
 		 
-		/* 
-		 * Course course = new Course(); course.setId(1); course.setName("Ek 1");
-		 * System.out.println(course.getName());
-		 * 
-		 * Course course1 = new Course(); course1.setId(1); course1.setName("Ek 2");
-		 * System.out.println(course1.getName());
-		 * 
-		 * Course course2 = new Course(); course2.setId(1); course2.setName("Ek 1");
-		 * System.out.println(course2.getName());
-		 * 
-		 * EntityDao[] entityDao = {new HibernateEntityDao()}; Logger[] loggers = {new
-		 * SMSLogger()}; List<Course> courses = new ArrayList<>();
-		 * 
-		 * CourseManager courseManager = new CourseManager(entityDao, loggers, courses);
-		 * 
-		 * courseManager.add(course); courseManager.add(course1);
-		 * courseManager.add(course2);
-		 */
 
 	}
 

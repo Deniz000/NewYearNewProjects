@@ -49,7 +49,6 @@ public class CourseManager {
 			log.log(course.getName().toString());
 		}
 		
-		System.out.println(course.getName() + " Eklendi ");
 	
 	}
 }
