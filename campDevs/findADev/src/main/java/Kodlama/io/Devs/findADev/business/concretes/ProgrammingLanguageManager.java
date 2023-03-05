@@ -2,14 +2,19 @@ package Kodlama.io.Devs.findADev.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import Kodlama.io.Devs.findADev.business.abstracts.ProgrammingLanguageService;
 import Kodlama.io.Devs.findADev.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
 
+@Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	ProgrammingLanguageRepository pLanguageRepository;
 	
 
+	@Autowired
 	public ProgrammingLanguageManager(ProgrammingLanguageRepository pLanguageRepository) {
 		super();
 		this.pLanguageRepository = pLanguageRepository;

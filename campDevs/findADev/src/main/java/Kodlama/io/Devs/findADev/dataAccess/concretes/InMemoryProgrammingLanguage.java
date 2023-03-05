@@ -1,15 +1,20 @@
 package Kodlama.io.Devs.findADev.dataAccess.concretes;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import Kodlama.io.Devs.findADev.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
 
+@Repository
 public class InMemoryProgrammingLanguage implements ProgrammingLanguageRepository{
 	
 	List<ProgrammingLanguage> listOfProgrammingLanguage;
 
 	public InMemoryProgrammingLanguage() {
+		listOfProgrammingLanguage = new ArrayList<>();
 		listOfProgrammingLanguage.add(new ProgrammingLanguage(0,"Java"));
 		listOfProgrammingLanguage.add(new ProgrammingLanguage(1,"C#"));
 		listOfProgrammingLanguage.add(new ProgrammingLanguage(2,"Python"));
