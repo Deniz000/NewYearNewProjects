@@ -36,5 +36,4 @@ public class BrandsController {
 		return brandServidce.getAll();
 		
 	}
-
 }
