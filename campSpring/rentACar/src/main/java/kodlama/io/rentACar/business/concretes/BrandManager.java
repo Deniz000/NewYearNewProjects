@@ -26,6 +26,6 @@ public class BrandManager implements BrandService{
 	@Override
 	public List<Brand> getAll() {
 		//iş kkuralları
-		return brandRepository.getAll();
+		return brandRepository.findAll();
 	}
 }

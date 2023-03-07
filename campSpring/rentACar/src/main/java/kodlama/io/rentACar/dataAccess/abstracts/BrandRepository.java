@@ -1,7 +1,5 @@
 package kodlama.io.rentACar.dataAccess.abstracts;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import kodlama.io.rentACar.entities.concretes.Brand;
@@ -12,6 +10,8 @@ import kodlama.io.rentACar.entities.concretes.Brand;
 
 public interface BrandRepository extends JpaRepository<Brand, Integer>{
 	
-
+	//JPA İLE bütün fonksiyonlar neredeyse hazır. 
+	//CONCRETE 'ı yok. Bellekte implemente etmiş gibi
+	//bir class oluşturuyor. Ekstra gerekmiyor. 
 }
  
