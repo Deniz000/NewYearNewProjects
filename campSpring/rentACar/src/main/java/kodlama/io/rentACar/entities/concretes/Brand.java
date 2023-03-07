@@ -1,41 +1,17 @@
 package kodlama.io.rentACar.entities.concretes;
 
+import org.springframework.data.relational.core.mapping.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Table(name = "brands")
+@Data  //bu bir data barındırır. Bunların getter ve setterlarını oluştr
+@AllArgsConstructor
+@NoArgsConstructor
+//@Entity //veritabanı varlığısın ve tablo olarak da buraya kaşılık geliyosun
 public class Brand {
 	private int id;
 	private String name;
-	
-	
-	public Brand() {
-		super();
-	}
-
-
-	public Brand(int id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	
 }
