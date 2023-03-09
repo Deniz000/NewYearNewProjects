@@ -1,18 +1,20 @@
 package Kodlama.io.Devs.findADev.business.concretes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.findADev.business.abstracts.ProgrammingLanguageService;
+import Kodlama.io.Devs.findADev.business.requests.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.findADev.business.responses.GetAllLanguagesResponse;
 import Kodlama.io.Devs.findADev.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
 
 @Service
-public class ProgrammingLanguageManager implements ProgrammingLanguageService{
+public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	ProgrammingLanguageRepository pLanguageRepository;
-	
 
 	@Autowired
 	public ProgrammingLanguageManager(ProgrammingLanguageRepository pLanguageRepository) {
@@ -21,44 +23,23 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService{
 	}
 
 	@Override
-	public List<ProgrammingLanguage> getAll() {
-		return pLanguageRepository.getAll();
-	}
-
-	@Override
-	public ProgrammingLanguage getById(int id) {
-		// TODO Auto-generated method stub
-		return pLanguageRepository.getById(id);
-	}
-
-	@Override
-	public void add(ProgrammingLanguage language) throws Exception {
-		for(ProgrammingLanguage ln : pLanguageRepository.getAll()) {
-			if(ln.getLanguageName().equals(language.getLanguageName())) {
-				throw new Exception("iki kere " + language.getLanguageName() + " eklenemez.");
-			}
-		}
-		pLanguageRepository.add(language);
-	}
-
-	@Override
-	public void delete(ProgrammingLanguage language) throws Exception {
-		boolean isThere = false;
-		for(ProgrammingLanguage ln : pLanguageRepository.getAll()) {
-			if(ln.getId() == language.getId()) {
-				pLanguageRepository.delete(language);
-				isThere = true;
-			}
-		}
-		if(isThere) {
-			throw new Exception("Bu öğe zaten yok." + language.getLanguageName());
-		}
+	public List<GetAllLanguagesResponse> getAll() {
 		
+		List<GetAllLanguagesResponse> languagesResponse = new ArrayList<GetAllLanguagesResponse>();
+		for (ProgrammingLanguage language : pLanguageRepository.findAll()) {
+			GetAllLanguagesResponse pl = new GetAllLanguagesResponse();
+			pl.setId(language.getId());
+			pl.setLanguageName(language.getName());
+			pl.setTechnologies(language.getTechnologies());
+			languagesResponse.add(pl);
+		}
+		return languagesResponse;
 	}
 
 	@Override
-	public void update(ProgrammingLanguage language) {
+	public void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 }

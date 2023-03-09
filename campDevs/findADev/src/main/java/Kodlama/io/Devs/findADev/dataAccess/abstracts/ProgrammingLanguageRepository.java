@@ -2,12 +2,13 @@ package Kodlama.io.Devs.findADev.dataAccess.abstracts;
 
 import java.util.*;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
 
-public interface ProgrammingLanguageRepository {
-		List<ProgrammingLanguage> getAll();
-		public ProgrammingLanguage getById(int id);
-		public void add(ProgrammingLanguage language);
-		public void delete(ProgrammingLanguage language);
-		public void update(ProgrammingLanguage language);
+public interface ProgrammingLanguageRepository extends JpaRepository<ProgrammingLanguage, Integer> {
+
+	//JPA İLE bütün fonksiyonlar neredeyse hazır. 
+	//CONCRETE 'ı yok. Bellekte implemente etmiş gibi
+	//bir class oluşturuyor. Ekstra gerekmiyor. 
 }

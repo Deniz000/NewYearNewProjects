@@ -1,14 +1,12 @@
 package Kodlama.io.Devs.findADev.entities.concretes;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +16,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name =  "programming_languages")
-public class ProgrammingLanguage {
+@Table(name = "technologies")
+public class Technology {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +27,7 @@ public class ProgrammingLanguage {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "programmingLanguage", cascade = CascadeType.ALL)
-	private List<Technology> technologies;
+	@ManyToOne
+	@JoinColumn(name = "programming_language_id")
+	private ProgrammingLanguage programmingLanguage;
 }

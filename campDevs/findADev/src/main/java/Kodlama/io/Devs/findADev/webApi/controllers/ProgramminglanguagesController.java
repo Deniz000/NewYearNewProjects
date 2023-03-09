@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Kodlama.io.Devs.findADev.business.abstracts.ProgrammingLanguageService;
+import Kodlama.io.Devs.findADev.business.responses.GetAllLanguagesResponse;
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
 
 @RestController
@@ -22,7 +23,7 @@ public class ProgramminglanguagesController {
 	}
 	
 	@GetMapping("/getall")
-	public List<ProgrammingLanguage> getAll(){
+	public List<GetAllLanguagesResponse> getAll(){
 		return pLanguageService.getAll();
 	}
 	

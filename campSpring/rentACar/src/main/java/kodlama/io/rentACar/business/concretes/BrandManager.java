@@ -46,7 +46,6 @@ public class BrandManager implements BrandService{
 	public void add(CreateBrandRequest createBrandRequest) {
 		Brand brand = new Brand();
 		brand.setName(createBrandRequest.getName());
-		
 		this.brandRepository.save(brand);		
 	}
 }

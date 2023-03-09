@@ -2,13 +2,11 @@ package Kodlama.io.Devs.findADev.business.abstracts;
 
 import java.util.List;
 
-import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
+import Kodlama.io.Devs.findADev.business.requests.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.findADev.business.responses.GetAllLanguagesResponse;
 
 public interface ProgrammingLanguageService {
-
-	List<ProgrammingLanguage> getAll();
-	public ProgrammingLanguage getById(int id);
-	public void add(ProgrammingLanguage language) throws Exception; 
-	public void delete(ProgrammingLanguage language) throws Exception; 
-	public void update(ProgrammingLanguage language);
+	
+	List<GetAllLanguagesResponse> getAll();
+	void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 }
