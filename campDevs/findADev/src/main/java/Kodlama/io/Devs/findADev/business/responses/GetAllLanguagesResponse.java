@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GetAllLanguagesResponse {
 	private int id;
-	private String languageName;
+	private String name;
 	private List<Technology> technologies;
 	
 }

@@ -1,7 +1,5 @@
 package Kodlama.io.Devs.findADev.business.requests;
 
-import java.util.Set;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateProgrammingLanguageRequest {
-	private String languageName;
-	private Set<String> techNames;	
+	//Api'den gelen kısım buraası. Bu nokta apiden geleni class'a çevirdiğimiz nokta, biz de buna response cevaplar oluşturuyoruz.
+	private int id;
+	private String name;
 }
