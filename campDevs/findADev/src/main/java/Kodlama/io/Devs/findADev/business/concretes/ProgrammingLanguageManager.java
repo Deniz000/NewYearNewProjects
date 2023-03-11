@@ -25,6 +25,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		this.pLanguageRepository = pLanguageRepository;
 	}
 
+	//https://github.com/FurkanD06/Kodlama.io.devs/blob/master/src/main/java/kodlama/io/Kodlama/io/Devs/business/concretes/ProgrammingLanguageManager.java
 	@Override
 	public List<GetAllLanguagesResponse> getAll() {
 
@@ -58,7 +59,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		if (!pLanguageRepository.findAll().isEmpty()) {
 			for (ProgrammingLanguage planguage : pLanguageRepository.findAll()) {
 				if (planguage.getName().equals(createRequest.getName().toLowerCase())) {
-					throw new Exception("Bu programlama dili sistemde zaten mevcut!");
+					throw new Exception("Bu programlama dili eklenemez. Sistemde zaten mevcut!");
 				}
 			}
 		}
@@ -80,6 +81,17 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 	@Override
 	public void update(UpdateProgrammingLanguageRequest updateRequest) throws Exception {
-		
+//		if (!pLanguageRepository.findAll().isEmpty()) {
+//			for (ProgrammingLanguage planguage : pLanguageRepository.findAll()) {
+//				if (planguage.getName().equals(updateRequest.getName().toLowerCase())) {
+//
+//				}
+//			}
+//		}
+		ProgrammingLanguage newLanguage = new ProgrammingLanguage();
+		newLanguage.setId(updateRequest.getId());
+		newLanguage.setName(updateRequest.getName().toLowerCase());
+
+		pLanguageRepository.save(newLanguage);		
 	}
 }

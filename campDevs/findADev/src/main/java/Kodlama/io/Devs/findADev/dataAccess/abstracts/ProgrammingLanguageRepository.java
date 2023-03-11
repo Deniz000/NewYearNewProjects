@@ -1,7 +1,5 @@
 package Kodlama.io.Devs.findADev.dataAccess.abstracts;
 
-import java.util.*;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
