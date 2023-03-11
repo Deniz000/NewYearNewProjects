@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.findADev.business.abstracts.ProgrammingLanguageService;
 import Kodlama.io.Devs.findADev.business.requests.CreateProgrammingLanguageRequest;
+import Kodlama.io.Devs.findADev.business.requests.DeleteProgrammingLanguageRequest;
+import Kodlama.io.Devs.findADev.business.requests.UpdateProgrammingLanguageRequest;
 import Kodlama.io.Devs.findADev.business.responses.GetAllLanguagesResponse;
 import Kodlama.io.Devs.findADev.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.findADev.entities.concretes.ProgrammingLanguage;
@@ -52,34 +54,32 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 	}
 
 	@Override
-	public void add(@RequestBody CreateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception {
+	public void add(@RequestBody CreateProgrammingLanguageRequest createRequest) throws Exception {
 		if (!pLanguageRepository.findAll().isEmpty()) {
 			for (ProgrammingLanguage planguage : pLanguageRepository.findAll()) {
-				if (planguage.getName().equals(createProgrammingLanguageRequest.getName().toLowerCase())) {
+				if (planguage.getName().equals(createRequest.getName().toLowerCase())) {
 					throw new Exception("Bu programlama dili sistemde zaten mevcut!");
 				}
 			}
 		}
 		ProgrammingLanguage newLanguage = new ProgrammingLanguage();
-		newLanguage.setName(createProgrammingLanguageRequest.getName().toLowerCase());
+		newLanguage.setName(createRequest.getName().toLowerCase());
 
 		pLanguageRepository.save(newLanguage);
 	}
 
 
 	@Override
-	public void delete(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception {
-		for(ProgrammingLanguage language : pLanguageRepository.findAll()) {
-			if(language.getId() == createProgrammingLanguageRequest.getId()) {
-				pLanguageRepository.deleteById(createProgrammingLanguageRequest.getId());
+	public void delete(DeleteProgrammingLanguageRequest deleteRequest) throws Exception {
+		for(ProgrammingLanguage language : pLanguageRepository.findAll()){
+			if(language.getName().equals(deleteRequest.getName())) {
+				pLanguageRepository.delete(language);
 			}
 		}
-		
 	}
 
 	@Override
-	public void update(CreateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception {
-		// TODO Auto-generated method stub
+	public void update(UpdateProgrammingLanguageRequest updateRequest) throws Exception {
 		
 	}
 }
