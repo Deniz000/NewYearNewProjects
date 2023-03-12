@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
-	ProgrammingLanguageRepository pLanguageRepository;
+	private ProgrammingLanguageRepository pLanguageRepository;
 
 	@Autowired
 	public ProgrammingLanguageManager(ProgrammingLanguageRepository pLanguageRepository) {
@@ -25,10 +25,8 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 		this.pLanguageRepository = pLanguageRepository;
 	}
 
-	//https://github.com/FurkanD06/Kodlama.io.devs/blob/master/src/main/java/kodlama/io/Kodlama/io/Devs/business/concretes/ProgrammingLanguageManager.java
 	@Override
-	public List<GetAllLanguagesResponse> getAll() {
-
+	public List<GetAllLanguagesResponse> getAll() {		
 		List<GetAllLanguagesResponse> languagesResponse = new ArrayList<GetAllLanguagesResponse>();
 		for (ProgrammingLanguage language : pLanguageRepository.findAll()) {
 			GetAllLanguagesResponse pl = new GetAllLanguagesResponse();
@@ -47,7 +45,7 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 			if(language.getId() == id) {
 				languageRequest.setId(language.getId());
 				languageRequest.setName(language.getName());
-				languageRequest.setTechnologies(language.getTechnologies());
+				//languageRequest.setTechnologies(language.getTechnologies());
 				return languageRequest;
 			}
 		}

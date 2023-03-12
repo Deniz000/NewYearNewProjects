@@ -2,6 +2,8 @@ package Kodlama.io.Devs.findADev.entities.concretes;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,6 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","technologies"})
 @Table(name =  "programming_languages")
 public class ProgrammingLanguage {
 	
