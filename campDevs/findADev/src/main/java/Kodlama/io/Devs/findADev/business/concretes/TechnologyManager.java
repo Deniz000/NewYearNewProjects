@@ -67,14 +67,15 @@ public class TechnologyManager implements TechnologyService{
 	@Override
 	public void delete(DeleteTechnologyRequest deleteRequest) throws Exception {
 		if (!technologyRepository.findAll().isEmpty()) {
+			System.out.print("1111111111111");
 			for (Technology technology : technologyRepository.findAll()) {
-				if (technology.getName().equals(deleteRequest.getName().toLowerCase())) {
+				System.out.print("22222222222222222");
+				if (technology.getName().equals(deleteRequest.getName())) {
 					technologyRepository.delete(technology);
-					break;
+					System.out.print("333333333333333333" + technology.getName());
+
 				}
 			}
-			throw new Exception("Bu öğe zaten yok!");
-			
 		}
 	}
 

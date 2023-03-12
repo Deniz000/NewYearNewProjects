@@ -39,7 +39,7 @@ public class TechnologiesController {
 		this.technologyService.add(cRequest);
 	} 
 	
-	@DeleteMapping("delete")
+	@DeleteMapping("/delete")
 	public void delete(DeleteTechnologyRequest deleteRequest) throws Exception{
 		this.technologyService.delete(deleteRequest);
 	}
