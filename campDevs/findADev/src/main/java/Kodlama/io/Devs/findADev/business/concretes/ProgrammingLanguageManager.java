@@ -79,17 +79,8 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
 
 	@Override
 	public void update(UpdateProgrammingLanguageRequest updateRequest) throws Exception {
-//		if (!pLanguageRepository.findAll().isEmpty()) {
-//			for (ProgrammingLanguage planguage : pLanguageRepository.findAll()) {
-//				if (planguage.getName().equals(updateRequest.getName().toLowerCase())) {
-//
-//				}
-//			}
-//		}
 		ProgrammingLanguage newLanguage = new ProgrammingLanguage();
-		newLanguage.setId(updateRequest.getId());
 		newLanguage.setName(updateRequest.getName().toLowerCase());
-
 		pLanguageRepository.save(newLanguage);		
 	}
 }

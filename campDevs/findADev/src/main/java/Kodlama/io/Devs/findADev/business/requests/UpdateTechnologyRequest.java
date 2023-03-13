@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class DeleteTechnologyRequest {
+@AllArgsConstructor
+public class UpdateTechnologyRequest {
+	private int id;
 	private String name;
-	//sadece p.dilini de silebilir
 	private ProgrammingLanguage language;
-
+	//sadece p.dilini de güncelleyebilir
+	
 
 }

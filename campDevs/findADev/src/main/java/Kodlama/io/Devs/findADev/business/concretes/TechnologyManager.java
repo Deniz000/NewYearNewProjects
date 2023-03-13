@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import Kodlama.io.Devs.findADev.business.abstracts.TechnologyService;
 import Kodlama.io.Devs.findADev.business.requests.CreateTechnologyRequest;
 import Kodlama.io.Devs.findADev.business.requests.DeleteTechnologyRequest;
-import Kodlama.io.Devs.findADev.business.requests.UpdateProgrammingLanguageRequest;
+import Kodlama.io.Devs.findADev.business.requests.UpdateTechnologyRequest;
 import Kodlama.io.Devs.findADev.business.responses.GetAllTechnologiesResponse;
 import Kodlama.io.Devs.findADev.dataAccess.abstracts.TechnologyRepository;
 import Kodlama.io.Devs.findADev.entities.concretes.Technology;
@@ -31,7 +31,7 @@ public class TechnologyManager implements TechnologyService{
 			GetAllTechnologiesResponse tech = new GetAllTechnologiesResponse();
 			tech.setId(technology.getId());
 			tech.setName(technology.getName());
-			//tech.setLanguage(technology.getProgrammingLanguage().getName());
+			tech.setLanguage(technology.getProgrammingLanguage().getName().toString());
 			technologies.add(tech);
 		}
 		return technologies ;
@@ -42,12 +42,13 @@ public class TechnologyManager implements TechnologyService{
 		GetAllTechnologiesResponse response = new GetAllTechnologiesResponse();
 		for(Technology technology : technologyRepository.findAll()) {
 			if(technology.getId() == id) {
-				response.setId(id);
+				response.setId(technology.getId());
 				response.setName(technology.getName());
 				response.setLanguage(technology.getProgrammingLanguage().toString());
+				return response;
 			}
 		}
-		return response;
+		return null;
 	}
 
 	@Override
@@ -61,18 +62,16 @@ public class TechnologyManager implements TechnologyService{
 		}
 		Technology technology = new Technology();
 		technology.setName(createRequest.getName());
+		technology.getProgrammingLanguage().setName(createRequest.getLanguage().getName());
 		technologyRepository.save(technology);
 	}
 
 	@Override
 	public void delete(DeleteTechnologyRequest deleteRequest) throws Exception {
 		if (!technologyRepository.findAll().isEmpty()) {
-			System.out.print("1111111111111");
 			for (Technology technology : technologyRepository.findAll()) {
-				System.out.print("22222222222222222");
 				if (technology.getName().equals(deleteRequest.getName())) {
 					technologyRepository.delete(technology);
-					System.out.print("333333333333333333" + technology.getName());
 
 				}
 			}
@@ -80,9 +79,10 @@ public class TechnologyManager implements TechnologyService{
 	}
 
 	@Override
-	public void update(UpdateProgrammingLanguageRequest createProgrammingLanguageRequest) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void update(UpdateTechnologyRequest updateRequest) throws Exception {
+		Technology technology = new Technology();
+		technology.setName(updateRequest.getName());
+		this.technologyRepository.save(technology);
 	}
 
 }
