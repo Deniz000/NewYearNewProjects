@@ -28,7 +28,7 @@ public class ProgramminglanguagesController {
 		this.pLanguageService = pLanguageService;
 	}
 	
-	@GetMapping("/getall")
+	@GetMapping()
 	public List<GetAllLanguagesResponse> getAll(){
 		return pLanguageService.getAll();
 	}

@@ -3,7 +3,6 @@ package Kodlama.io.Devs.findADev.business.concretes;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Kodlama.io.Devs.findADev.business.abstracts.TechnologyService;
@@ -13,16 +12,12 @@ import Kodlama.io.Devs.findADev.business.requests.UpdateTechnologyRequest;
 import Kodlama.io.Devs.findADev.business.responses.GetAllTechnologiesResponse;
 import Kodlama.io.Devs.findADev.dataAccess.abstracts.TechnologyRepository;
 import Kodlama.io.Devs.findADev.entities.concretes.Technology;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class TechnologyManager implements TechnologyService{
 	private TechnologyRepository technologyRepository; 
-	
-	@Autowired
-	public TechnologyManager(TechnologyRepository technologyRepository) {
-		super();
-		this.technologyRepository = technologyRepository;
-	}
 
 	@Override
 	public List<GetAllTechnologiesResponse> getAll() {
