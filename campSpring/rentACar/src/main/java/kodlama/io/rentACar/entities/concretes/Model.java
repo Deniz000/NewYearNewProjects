@@ -8,19 +8,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "brands")
-@Data  //bu bir data barındırır. Bunların getter ve setterlarını oluştr
+@Table(name = "models")
+@Data  
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity //veritabanı varlığısın ve tablo olarak da buraya kaşılık geliyosun
-public class Brand {
-	
+@Entity 
+public class Model {
+	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -29,9 +31,10 @@ public class Brand {
 	@Column(name="name")
 	private String name;
 	
-	@OneToMany(mappedBy = "brand")
-	List<Model> models;
+	@ManyToOne
+	@JoinColumn(name="brand_id")
+	private Brand brand;
+	
+	@OneToMany(mappedBy="model")
+	List<Car> cars;
 }
-
-//colon isimleri ile buradaki isimler farklılık gösterebilir bu nedenle
-//@column yapıp kardeşim sen şu column sun deriz
