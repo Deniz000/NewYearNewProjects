@@ -23,14 +23,20 @@ public class ModelManager implements ModelService{
 	@Override
 	public List<GetAllModelsResponse> getAll() {
 		List<Model> models = this.modelRepository.findAll();
+		for(Model m:models) {
+			System.out.println(m.getName() + "****-----------------------********");
+		}
 		List<GetAllModelsResponse> response = models.stream()
-				.map(model -> this.modelMapper.forResponse().map(models, GetAllModelsResponse.class)).collect(Collectors.toList());
+				.map(model -> this.modelMapper.forResponse()
+						.map(model, GetAllModelsResponse.class)).collect(Collectors.toList());				
 		return response;
 	}
 
 	@Override
 	public void add(CreateModelRequest createRequest) {
 		Model model = this.modelMapper.forRequest().map(createRequest, Model.class);
+		
+
 		this.modelRepository.save(model);
 	}
 
