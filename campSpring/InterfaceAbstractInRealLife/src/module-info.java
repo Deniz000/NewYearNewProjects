@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author guldenizozdemir
+ *
+ */
+module InterfaceAbstractInRealLife {
+}

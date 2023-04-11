@@ -19,6 +19,8 @@ import kodlama.io.rentACar.business.requests.CreateBrandRequest;
 import kodlama.io.rentACar.business.requests.UpdateBrandRequest;
 import kodlama.io.rentACar.business.responses.GetAllBrandsResponse;
 import kodlama.io.rentACar.business.responses.GetByIdBrandResponse;
+import kodlama.io.rentACar.core.utilities.results.DataResult;
+import kodlama.io.rentACar.core.utilities.results.Result;
 import lombok.AllArgsConstructor;
 
 //uygulama çalıştığı esnada, üstüne geliyo
@@ -39,21 +41,22 @@ public class BrandsController {
 
 	
 	@GetMapping()
-	public List<GetAllBrandsResponse> getAll(){
+	public DataResult<List<GetAllBrandsResponse>> getAll(){
 		return brandServidce.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public GetByIdBrandResponse getById(@PathVariable int id) {
+	public DataResult<GetByIdBrandResponse> getById(@PathVariable int id) {
 		return brandServidce.getById(id);
 	}
 	 
+	//mapping eşleme dedik. Bunlar gönderileni bizim entity miz ile eşler
 	@PostMapping()
 	@ResponseStatus(code=HttpStatus.CREATED)
-	public void add(@Valid() CreateBrandRequest createBrandRequest) {
-		this.brandServidce.add(createBrandRequest);
+	public Result add(@Valid() CreateBrandRequest createBrandRequest) {
+		return this.brandServidce.add(createBrandRequest);
 	}
-	
+	 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable int id) {
 		this.brandServidce.delete(id);

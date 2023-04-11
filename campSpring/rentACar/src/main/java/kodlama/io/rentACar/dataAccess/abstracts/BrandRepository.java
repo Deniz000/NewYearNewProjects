@@ -20,9 +20,24 @@ public interface BrandRepository extends JpaRepository<Brand, Integer>{
 	//ve bu metodu kendininmiş gibi işliyor. 
 	// exists 'i görüp bakıyor 
 	//bu kullanımın fin seçenekleri de var
-	// SPRİNG JPA KEYWORDS  
+	// SPRİNG JPA KEYWORDS  - https://docs.spring.io/spring-data/jpa/docs/1.5.0.RELEASE/reference/html/jpa.repositories.html
 	boolean existsByName(String name);
 	//find 'lı bişe kullanırsak  Brand find şeklinde 
 	// çoklu istiyosak da List<>
+//	
+//	Brand getByBrandName(String name);
+//	
+//	// select sorgusundaki and işlemi 
+//	Brand getByBrandNameAndModelId(String name, int modelId);
+//	
+//	List<Brand> getByBrandNameOrModelID(String name, int modelId);
+//	
+//	// select * from model in(3,4,5) deki In
+//	List<Brand> getByModelIdIn(List<Integer> models);
+//	
+	//jpql yazımı  
+//	// :değişken gelen değerdir - parametre 
+//	@Query("From Brand where name=:brandName and modelId=:modelId")
+//	List<Brand> GetByNameAndCategory(String brandName, int modelId);
+//	//select * from brand where name=bişey and categoryId= bişey	
 }
- 

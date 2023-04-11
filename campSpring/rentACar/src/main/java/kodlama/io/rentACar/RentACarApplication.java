@@ -25,6 +25,8 @@ public class RentACarApplication {
 	}
 	
 	
+	//excaptionhandler ile parametreden gelen exception ilişkili. Hangisi gelirse onu çalıştırır. 
+	
 	//aynı zamanda loglayabiliriz
 	@ExceptionHandler  //hata oluşursa buradan geçecek //yakalanırsa da 
 	@ResponseStatus(code=HttpStatus.BAD_REQUEST)  //hata bilgisi döneceğim
