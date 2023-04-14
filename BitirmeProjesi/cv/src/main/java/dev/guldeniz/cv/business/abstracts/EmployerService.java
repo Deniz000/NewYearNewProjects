@@ -1,8 +1,9 @@
 package dev.guldeniz.cv.business.abstracts;
 
-import dev.guldeniz.cv.entities.concretes.Employer;
+import dev.guldeniz.cv.business.requests.CreateEmployerRequest;
+import jakarta.validation.Valid;
 
 public interface EmployerService {
-	void add(Employer employer) throws Exception;
+	void add(@Valid CreateEmployerRequest employerReqest) throws Exception;
 
 }

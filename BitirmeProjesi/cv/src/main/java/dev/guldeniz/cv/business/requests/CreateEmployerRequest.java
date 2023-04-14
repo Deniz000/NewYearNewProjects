@@ -9,33 +9,28 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateJobSeekeerRequest {
-	
-
-	@NotNull
-	@NotBlank
-	private String firstName;
-
-	@NotNull
-	@NotBlank
-	private String lastName;
+public class CreateEmployerRequest {
 	
 	@NotNull
 	@NotBlank
-	private String nationalIdentity;
+	private String companyName;
 
 	@NotNull
 	@NotBlank
-	private int birthYear;
+	private String webAddress;
 
 	@NotNull
 	@NotBlank
-	private String ePosta;
+    private String phone;
+	
+	@NotNull
+	@NotBlank
+	private String eMail;
 
 	@NotNull
 	@NotBlank
 	private String password;
-
+	
 	@NotNull
 	@NotBlank
 	private String confirmPassword;
