@@ -20,6 +20,10 @@ public class EmployerManager implements EmployerService{
 		//email domini ile domain eşleşti mi bakar. Eşleşmediyse hata fırlatır. Kaydolmaz. 
 		this.employerBusinessRules.checkIfEMailMatch(employerRequest.getEMail(), employerRequest.getWebAddress());
 		
+		//sifre hashlemesi
+		String salt = EmployerBusinessRules.generateSalt();
+		EmployerBusinessRules.hashPassword(employerRequest.getPassword(), salt);
+		
 	}
 
 }
