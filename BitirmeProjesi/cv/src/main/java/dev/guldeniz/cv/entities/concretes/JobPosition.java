@@ -18,4 +18,7 @@ public class JobPosition {
     @Column(name = "position_name")
     private String positionName;
     
+    @Column(name = "description")
+    private String description;
+    
 }
