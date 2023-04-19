@@ -25,7 +25,7 @@ public abstract class User {
 	private Long id;
 
 	@Column(name="email", unique=true)
-	private String eMail;
+	private String EMail;
 	
 	
 	@Column(name="password_hash")
