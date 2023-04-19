@@ -3,8 +3,11 @@ package dev.guldeniz.cv.business.concretes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Service;
+
 import dev.guldeniz.cv.business.abstracts.EmailService;
 
+@Service
 public class EmailManager implements EmailService{
 
 	@Override
