@@ -18,6 +18,12 @@ public class EmailManager implements EmailService{
 	}
 
 	@Override
+	public String generateVerificationCode() {
+		// TODO Auto-generated method stub
+		return "211743";
+	}
+
+	@Override
 	public boolean isEmailValid(String email) {
 
 		final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -27,12 +33,6 @@ public class EmailManager implements EmailService{
 	
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
-	}
-
-	@Override
-	public String generateVerificationCode() {
-		// TODO Auto-generated method stub
-		return "211743";
 	}
 
 }	//

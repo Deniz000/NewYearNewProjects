@@ -2,9 +2,10 @@ package dev.guldeniz.cv.business.abstracts;
 
 import java.util.List;
 
-import dev.guldeniz.cv.entities.concretes.JobPosition;
+import dev.guldeniz.cv.business.requests.CreateJobPositionRequest;
+import dev.guldeniz.cv.business.responses.GetAllJobPositionsResponse;
 
 public interface JobPositionService {
-	List<JobPosition> getAll();
-	void add(JobPosition jobPosition);
+	List<GetAllJobPositionsResponse> getAll();
+	void add(CreateJobPositionRequest jobPositionRequest);
 }
