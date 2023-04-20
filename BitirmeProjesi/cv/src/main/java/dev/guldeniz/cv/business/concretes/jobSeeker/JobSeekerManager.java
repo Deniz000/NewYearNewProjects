@@ -32,7 +32,9 @@ public class JobSeekerManager implements JobSeekerService{
 
 	@Override
 	public List<GetAllJobSeekerResponse> getAll() {
+		
 		List<JobSeeker> seekers = this.jobSeekerRepository.findAll();
+		
 		List<GetAllJobSeekerResponse> responses = seekers.stream()
 				.map(jobSeeker -> this.modelMapperService.forResponse()
 				.map(jobSeeker, GetAllJobSeekerResponse.class)).collect(Collectors.toList());
