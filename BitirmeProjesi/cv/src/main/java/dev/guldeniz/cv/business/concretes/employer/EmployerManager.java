@@ -47,10 +47,10 @@ public class EmployerManager implements EmployerService{
 		//email domini ile domain eşleşti mi bakar. Eşleşmediyse hata fırlatır. Kaydolmaz. 
 		this.employerBusinessRules.checkIfEMailMatch(employerRequest.getEMail(), employerRequest.getWebAddress());
 		
-		//sifre hashlemesi
+		//sifreyi hashliyoruz
 		String salt = EmployerBusinessRules.generateSalt();
 		EmployerBusinessRules.hashPassword(employerRequest.getPassword(), salt);
-		
+		//sonra kaydediyoruz
 		//mapleme ile employer class'a çevrilir 
 		Employer employer = this.modelMapperService.forRequest().map(employerRequest, Employer.class);
 		this.employerRepository.save(employer);

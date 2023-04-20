@@ -40,22 +40,19 @@ public class EmployerBusinessRules {
 	// SİFRE HASHLEMEK İÇİN GEREKEN KODLAR
 	private static final SecureRandom random = new SecureRandom();
 
+	// hash için kod
 	public static String generateSalt() {
 		byte[] salt = new byte[16];
 		random.nextBytes(salt);
 		return bytesToHex(salt);
 	}
 
-	public static String hashPassword(String password, String salt) {
+	public static String hashPassword(String password, String salt) throws NoSuchAlgorithmException {
 		String passwordWithSalt = password + salt;
-		try {
-			MessageDigest md = MessageDigest.getInstance("SHA-256");
-			byte[] hashedPassword = md.digest(passwordWithSalt.getBytes());
-			return bytesToHex(hashedPassword);
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
-		return null;
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		byte[] hashedPassword = md.digest(passwordWithSalt.getBytes());
+		return bytesToHex(hashedPassword);
+
 	}
 
 	private static String bytesToHex(byte[] bytes) {
@@ -67,7 +64,7 @@ public class EmployerBusinessRules {
 	}
 
 	// HASLANAN SİFRE DOĞRU MU
-	public static boolean checkPassword(String password, String salt, String expectedHash) {
+	public static boolean checkPassword(String password, String salt, String expectedHash) throws NoSuchAlgorithmException {
 		String actualHash = hashPassword(password, salt);
 		return actualHash.equals(expectedHash);
 	}
