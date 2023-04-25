@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.EmailService;
+import io.micrometer.common.util.StringUtils;
 
 @Service
 public class EmailManager implements EmailService{
@@ -31,8 +32,11 @@ public class EmailManager implements EmailService{
 	
 		final Pattern pattern = Pattern.compile(EMAIL_PATTERN);
 	
-		Matcher matcher = pattern.matcher(email);
-		return matcher.matches();
+		if (StringUtils.isNotBlank(email)) {
+	        Matcher matcher = pattern.matcher(email);
+	        return matcher.matches();
+	    }
+		return false;
 	}
 
 }	//

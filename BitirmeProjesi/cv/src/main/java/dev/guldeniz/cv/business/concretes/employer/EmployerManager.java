@@ -3,6 +3,7 @@ package dev.guldeniz.cv.business.concretes.employer;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.EmailService;
@@ -48,13 +49,22 @@ public class EmployerManager implements EmployerService{
 		this.employerBusinessRules.checkIfEMailMatch(employerRequest.getEMail(), employerRequest.getWebAddress());
 		
 		//sifreyi hashliyoruz
-		String salt = EmployerBusinessRules.generateSalt();
-		EmployerBusinessRules.hashPassword(employerRequest.getPassword(), salt);
+//		String salt = PasswordRules.generateSalt();
+//		PasswordRules.hashPassword(employerRequest.getPassword(), salt);
 		//sonra kaydediyoruz
 		//mapleme ile employer class'a çevrilir 
+		
+		  PropertyMap<CreateEmployerRequest, Employer> employerMap = new PropertyMap<CreateEmployerRequest, Employer>() {
+		        protected void configure() {
+		        	map().setPasswordHash(source.getPassword());
+//		        	map().setPasswordHash(null);// Skip the 'confirmPassword' field
+		        }
+		    };
+		    this.modelMapperService.forRequest().addMappings(employerMap);
+
 		Employer employer = this.modelMapperService.forRequest().map(employerRequest, Employer.class);
 		this.employerRepository.save(employer);
- 		
+ 		 
 		String verificationCode = this.emailService.generateVerificationCode();
 		this.emailService.sendEmail(employerRequest.getEMail(), "Email Doğrulama", "Doğrulama kodunuz:" + verificationCode);
 		
@@ -62,7 +72,6 @@ public class EmployerManager implements EmployerService{
 		if(!staffSevice.approveEmployer(employerRequest)) {
 			throw new Exception("Kullanıcı onaylanmadı. (HRSM Reddi)");
 		}
-		
 	}
 
 }

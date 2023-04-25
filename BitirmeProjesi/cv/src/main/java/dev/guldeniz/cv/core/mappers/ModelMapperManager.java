@@ -5,10 +5,13 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ModelMapperManager implements ModelMapperService{
 
-	ModelMapper modelMapper;
+	private ModelMapper modelMapper;
 	
 	@Override
 	public ModelMapper forResponse() {
@@ -23,8 +26,9 @@ public class ModelMapperManager implements ModelMapperService{
 	public ModelMapper forRequest() {
 		this.modelMapper.getConfiguration()
 		.setAmbiguityIgnored(true)
-		.setPropertyCondition(Conditions.isNotNull())
-		.setMatchingStrategy(MatchingStrategies.STANDARD);
+		.setSkipNullEnabled(true)
+		.setMatchingStrategy(MatchingStrategies.STRICT)
+		.setPropertyCondition(Conditions.isNotNull());
 		return this.modelMapper;
 	}
 

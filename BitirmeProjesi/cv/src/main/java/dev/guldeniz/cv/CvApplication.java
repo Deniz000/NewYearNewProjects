@@ -11,10 +11,9 @@ public class CvApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CvApplication.class, args);
 	}
-
 	@Bean
-	public ModelMapper getModelMapper() {
-		return new ModelMapper();
+	public ModelMapper modelMapper() {
+	    return new ModelMapper();
 	}
 
 }

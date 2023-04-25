@@ -28,7 +28,7 @@ public class EmployerController {
 		this.employerService.add(employerReqest);
 	}
 	
-	@GetMapping()
+	@GetMapping("/g")
 	public List<GetAllEmployerResponse> getAll(){
 		return this.employerService.getAll();
 	}

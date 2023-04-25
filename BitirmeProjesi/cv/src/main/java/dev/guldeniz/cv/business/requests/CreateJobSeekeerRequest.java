@@ -3,10 +3,13 @@ package dev.guldeniz.cv.business.requests;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateJobSeekeerRequest {
@@ -24,13 +27,12 @@ public class CreateJobSeekeerRequest {
 	@NotBlank
 	private String nationalIdentity;
 
-	@NotNull
-	@NotBlank
+	@NotNull(message = "Birth year cannot be null")
 	private int birthYear;
 
 	@NotNull
 	@NotBlank
-	private String ePosta;
+	private String eMail;
 
 	@NotNull
 	@NotBlank
