@@ -3,6 +3,7 @@ package dev.guldeniz.cv.business.concretes.jobSeeker;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.EmailService;
@@ -57,6 +58,17 @@ public class JobSeekerManager implements JobSeekerService{
 		this.jobSeekerBusinessRules.checkIfNationalIdentityExists(jobSeekerRequuest.getNationalIdentity());
 		//emaiil geçerli formatta mı ? 
 		this.emailService.isEmailValid(jobSeekerRequuest.getEMail());
+		
+		//şifreleri eşledikten sonra mapleme yaparken ikinci alınan şifreyi atlamak için
+		//aksi taktirde alanlar uyuşmuyor ve hata dönüyor 
+		PropertyMap<CreateJobSeekeerRequest, JobSeeker> jobSeekerMap = new PropertyMap<CreateJobSeekeerRequest, JobSeeker>(){
+
+			@Override
+			protected void configure() {
+				map().setPasswordHash(source.getPassword());
+			}	
+		};
+		this.modelMapperService.forRequest().addMappings(jobSeekerMap);
 		
 		JobSeeker jobSeeker = this.modelMapperService.forRequest().map(jobSeekerRequuest, JobSeeker.class);
 		jobSeeker.setActive(true);

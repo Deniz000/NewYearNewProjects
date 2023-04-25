@@ -14,7 +14,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/api/jobseeker")
+@RequestMapping("/api/jobseekers")
 @AllArgsConstructor
 public class JobSeekerController {
 	
@@ -25,8 +25,12 @@ public class JobSeekerController {
 		return this.jobSeekerService.getAll();
 	}
 
-	@PostMapping()
+	@PostMapping("/register")
 	public void add(@Valid CreateJobSeekeerRequest jobSeekerRequest) throws Exception {
+		if(!jobSeekerRequest.getPassword().equals(jobSeekerRequest.getConfirmPassword())) {
+			throw new RuntimeException("Şifreler Uyuşmuyor!");
+		}
+		
 		this.jobSeekerService.add(jobSeekerRequest);
 	}
 }
