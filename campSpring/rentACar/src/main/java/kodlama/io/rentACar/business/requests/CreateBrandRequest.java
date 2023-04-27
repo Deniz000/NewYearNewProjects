@@ -15,6 +15,6 @@ public class CreateBrandRequest {
 	
 	@NotNull //backend zorunlu, frontend opsiyonel
 	@NotBlank
-	private String name;
+	private String brandName;
 	
 }

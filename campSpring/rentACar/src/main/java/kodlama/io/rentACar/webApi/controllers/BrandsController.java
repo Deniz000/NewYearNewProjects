@@ -53,7 +53,7 @@ public class BrandsController {
 	//mapping eşleme dedik. Bunlar gönderileni bizim entity miz ile eşler
 	@PostMapping()
 	@ResponseStatus(code=HttpStatus.CREATED)
-	public Result add(@Valid() CreateBrandRequest createBrandRequest) {
+	public Result add(@Valid CreateBrandRequest createBrandRequest) {
 		return this.brandServidce.add(createBrandRequest);
 	}
 	 

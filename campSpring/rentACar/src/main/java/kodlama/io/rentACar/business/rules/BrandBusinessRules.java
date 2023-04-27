@@ -15,7 +15,7 @@ public class BrandBusinessRules {
 	
 	//iş kuralını yaz, uymadığı anda patlat 
 	public void checkIfBrandNameExists(String name) {
-		if(this.brandRepository.existsByName(name)) {
+		if(this.brandRepository.existsByBrandName(name)) {
 			//problemi yakaladıın anda
 			throw new BusinessException("Brand already exists");
 			//

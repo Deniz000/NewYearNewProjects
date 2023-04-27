@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.guldeniz.cv.business.abstracts.EmployerService;
 import dev.guldeniz.cv.business.requests.CreateEmployerRequest;
 import dev.guldeniz.cv.business.responses.GetAllEmployerResponse;
+import dev.guldeniz.cv.core.results.DataResult;
+import dev.guldeniz.cv.core.results.Result;
+import dev.guldeniz.cv.core.results.SuccessResult;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -21,15 +24,16 @@ public class EmployerController {
 	private EmployerService employerService;
 	
 	@PostMapping("/register")
-	public void add(@Valid CreateEmployerRequest employerReqest) throws Exception {
+	public Result add(@Valid CreateEmployerRequest employerReqest) throws Exception {
 		if(!employerReqest.getPassword().equals(employerReqest.getConfirmPassword())) {
 			throw new RuntimeException("Şifreler uyuşmuyor!");
 		}
 		this.employerService.add(employerReqest);
+		return new SuccessResult("Kayıt işlemi başarılı!");
 	}
 	
 	@GetMapping("/g")
-	public List<GetAllEmployerResponse> getAll(){
+	public DataResult<List<GetAllEmployerResponse>> getAll(){
 		return this.employerService.getAll();
 	}
 }

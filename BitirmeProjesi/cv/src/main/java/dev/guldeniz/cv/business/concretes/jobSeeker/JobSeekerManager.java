@@ -13,6 +13,10 @@ import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobSeekerResponse;
 import dev.guldeniz.cv.business.rules.JobSeekerBusinessRules;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
+import dev.guldeniz.cv.core.results.DataResult;
+import dev.guldeniz.cv.core.results.Result;
+import dev.guldeniz.cv.core.results.SuccessDataResult;
+import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobSeekerRepository;
 import dev.guldeniz.cv.entities.concretes.JobSeeker;
 import lombok.AllArgsConstructor;
@@ -31,7 +35,7 @@ public class JobSeekerManager implements JobSeekerService{
 	
 
 	@Override
-	public List<GetAllJobSeekerResponse> getAll() {
+	public DataResult<List<GetAllJobSeekerResponse>> getAll() {
 		
 		List<JobSeeker> seekers = this.jobSeekerRepository.findAll();
 		
@@ -40,12 +44,13 @@ public class JobSeekerManager implements JobSeekerService{
 				.map(jobSeeker, GetAllJobSeekerResponse.class)).collect(Collectors.toList());
 		
 
-		return responses;
+		return new SuccessDataResult<List<GetAllJobSeekerResponse>>(
+				responses,"Data Listelendi");
 	}
 	
 	
 	@Override
-	public void add(CreateJobSeekeerRequest jobSeekerRequuest) throws Exception {
+	public Result add(CreateJobSeekeerRequest jobSeekerRequuest) throws Exception {
 		if(identityValidationService.validateIdentity(jobSeekerRequuest)) {
 			System.out.println("kaydedildi");
 		}else {
@@ -74,7 +79,7 @@ public class JobSeekerManager implements JobSeekerService{
 		jobSeeker.setActive(true);
 		jobSeeker.setVerified(true);
 		this.jobSeekerRepository.save(jobSeeker);
-		
+		return new SuccessResult("Kayıt Başarılı!");
 	}
 
 }

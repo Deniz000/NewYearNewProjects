@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.guldeniz.cv.business.abstracts.JobSeekerService;
 import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobSeekerResponse;
+import dev.guldeniz.cv.core.results.DataResult;
+import dev.guldeniz.cv.core.results.Result;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -21,16 +23,16 @@ public class JobSeekerController {
 	private JobSeekerService jobSeekerService;
 	
 	@GetMapping()
-	public List<GetAllJobSeekerResponse> getAll(){
+	public DataResult<List<GetAllJobSeekerResponse>> getAll(){
 		return this.jobSeekerService.getAll();
 	}
 
 	@PostMapping("/register")
-	public void add(@Valid CreateJobSeekeerRequest jobSeekerRequest) throws Exception {
+	public Result add(@Valid CreateJobSeekeerRequest jobSeekerRequest) throws Exception {
 		if(!jobSeekerRequest.getPassword().equals(jobSeekerRequest.getConfirmPassword())) {
 			throw new RuntimeException("Şifreler Uyuşmuyor!");
 		}
 		
-		this.jobSeekerService.add(jobSeekerRequest);
+		return this.jobSeekerService.add(jobSeekerRequest);
 	}
 }

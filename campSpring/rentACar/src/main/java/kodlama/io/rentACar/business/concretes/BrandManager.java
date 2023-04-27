@@ -23,6 +23,7 @@ import lombok.AllArgsConstructor;
 @Service  //business nesnesi demek
 @AllArgsConstructor
 public class BrandManager implements BrandService{
+	
 	private BrandRepository brandRepository;
 	private ModelMapperService modelMapperService;
 	private BrandBusinessRules brandBusinessRules;
@@ -55,10 +56,10 @@ public class BrandManager implements BrandService{
 
 	@Override
 	public Result add(CreateBrandRequest createBrandRequest) {
-		this.brandBusinessRules.checkIfBrandNameExists(createBrandRequest.getName());;
+		this.brandBusinessRules.checkIfBrandNameExists(createBrandRequest.getBrandName());;
 		
 		Brand brand = this.modelMapperService.forRequest().map(createBrandRequest, Brand.class);
-		System.out.print(brand.getName() + "-------------------------------");
+		System.out.print(brand.getBrandName() + "-------------------------------");
 		this.brandRepository.save(brand);	
 		return new SuccessResult("Ürün eklendi");
 	}

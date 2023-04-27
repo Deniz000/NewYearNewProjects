@@ -13,6 +13,10 @@ import dev.guldeniz.cv.business.requests.CreateEmployerRequest;
 import dev.guldeniz.cv.business.responses.GetAllEmployerResponse;
 import dev.guldeniz.cv.business.rules.EmployerBusinessRules;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
+import dev.guldeniz.cv.core.results.DataResult;
+import dev.guldeniz.cv.core.results.Result;
+import dev.guldeniz.cv.core.results.SuccessDataResult;
+import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.EmployerRepository;
 import dev.guldeniz.cv.entities.concretes.Employer;
 import lombok.AllArgsConstructor;
@@ -30,18 +34,19 @@ public class EmployerManager implements EmployerService{
 	
 
 	@Override
-	public List<GetAllEmployerResponse> getAll() {
+	public DataResult<List<GetAllEmployerResponse>> getAll() {
 		List<Employer> employers = this.employerRepository.findAll();
 		List<GetAllEmployerResponse> responses = employers.stream()
 				.map(employer -> this.modelMapperService.forResponse()
 						.map(employer, GetAllEmployerResponse.class)).collect(Collectors.toList());
-		return responses;
+		return new SuccessDataResult<List<GetAllEmployerResponse>>(
+				responses,"Data Listelendi!");
 	}
 	
 	
 	//    @Transactional  eklenmeli
 	@Override
-	public void add(CreateEmployerRequest employerRequest) throws Exception {
+	public Result add(CreateEmployerRequest employerRequest) throws Exception {
 		//email adresinin kayıtlı olup olmadığını kontrol eder. Varsa haa dönecek ve kayıt gerçekleşmeyecek.
 		this.employerBusinessRules.checkIfEMailExist(employerRequest.getEMail());
 		
@@ -74,6 +79,7 @@ public class EmployerManager implements EmployerService{
 		if(!staffSevice.approveEmployer(employerRequest)) {
 			throw new Exception("Kullanıcı onaylanmadı. (HRSM Reddi)");
 		}
+		return new SuccessResult("Kayıt Başarılı!");
 	}
 
 }

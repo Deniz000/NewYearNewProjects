@@ -11,7 +11,7 @@ public class GetAllBrandsResponse {
 //yani tüm brand leri listelemek istediğimizdeki yanıtımız
 	
 	private int id;
-	private String name;
+	private String brandName;
 	
 }
 
