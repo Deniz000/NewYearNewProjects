@@ -19,6 +19,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/jobpostings")
 @AllArgsConstructor
 public class JobPostingController {
+	
 	private JobPostingService jobPostingService;
 
 

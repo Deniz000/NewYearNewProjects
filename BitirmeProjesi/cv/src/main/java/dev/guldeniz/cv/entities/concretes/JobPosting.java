@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,7 +47,7 @@ public class JobPosting {
     @Column(name="is_active")
     private boolean active;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
 

@@ -1,11 +1,13 @@
 package dev.guldeniz.cv.entities.concretes;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +26,7 @@ public class JobPosition {
     private String positionName;
     
 
-    @OneToOne(mappedBy = "jobPosition")
-    private JobPosting jobPosting;
+    @OneToMany(mappedBy="jobPosition")
+    private List<JobPosting> jobPosting;
     
 }

@@ -2,8 +2,6 @@ package dev.guldeniz.cv.business.responses;
 
 import java.time.LocalDate;
 
-import dev.guldeniz.cv.entities.concretes.Employer;
-import dev.guldeniz.cv.entities.concretes.JobPosition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +19,6 @@ public class GetAllJobPostingResponse {
 	private int openPositionCount;
 	private LocalDate applicationDeadline;
 	private boolean active;
-	private JobPosition jobPosition;
-	private Employer employer;
+	private String positionName;
+	private String companyName;
 }

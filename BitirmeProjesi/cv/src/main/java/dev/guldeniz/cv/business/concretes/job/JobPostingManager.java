@@ -19,27 +19,27 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class JobPostingManager implements JobPostingService{
+public class JobPostingManager implements JobPostingService {
 	private JobPostingRepository jobPositingRepository;
 	private ModelMapperService modelMapperService;
 
-
 	@Override
 	public Result add(CreateJobPostingRequest postingRequest) {
+		
 		JobPosting jobPosting = this.modelMapperService.forRequest().map(postingRequest, JobPosting.class);
 		this.jobPositingRepository.save(jobPosting);
+
 		return new SuccessResult("Data Eklendi");
 	}
-
 
 	@Override
 	public DataResult<List<GetAllJobPostingResponse>> getAll() {
 		List<JobPosting> postings = this.jobPositingRepository.findAll();
 		List<GetAllJobPostingResponse> responses = postings.stream()
-				.map(p -> this.modelMapperService.forResponse()
-						.map(p, GetAllJobPostingResponse.class)).collect(Collectors.toList());
+				.map(p -> this.modelMapperService.forResponse().map(p, GetAllJobPostingResponse.class))
+				.collect(Collectors.toList());
+		System.out.println(responses.get(0).getCompanyName());		
 		return new SuccessDataResult<List<GetAllJobPostingResponse>>(responses, "Data Listelendi");
 	}
 
-	
 }
