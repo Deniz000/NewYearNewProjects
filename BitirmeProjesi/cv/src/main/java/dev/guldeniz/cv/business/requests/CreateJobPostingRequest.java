@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import dev.guldeniz.cv.entities.concretes.Employer;
 import dev.guldeniz.cv.entities.concretes.JobPosition;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,14 +15,32 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateJobPostingRequest {
+
+	@NotNull
 	private String jobDescription;
+
+	@NotNull
 	private String city;
+
+	@NotNull
 	private int minSalary;
+	
+	@NotNull
 	private int maxSalary;
+	
+	@NotNull
 	private int openPositionCount;
+	
+	@NotNull
 	private LocalDate applicationDeadline;
+	
+	@NotNull
 	private boolean active;
+	
+	@NotNull
 	private JobPosition jobPosition;
+	
+	@NotNull
 	private Employer employer;
 
 }

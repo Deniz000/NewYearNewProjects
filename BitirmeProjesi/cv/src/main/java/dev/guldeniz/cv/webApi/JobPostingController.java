@@ -21,14 +21,15 @@ import lombok.AllArgsConstructor;
 public class JobPostingController {
 	private JobPostingService jobPostingService;
 
+
+	@GetMapping()
+	public DataResult<List<GetAllJobPostingResponse>> getAll(){
+		return this.jobPostingService.getAll();
+	}
+	
 	@PostMapping()
 	public Result add(@Valid CreateJobPostingRequest jobPostingRequest) {
 		return this.jobPostingService.add(jobPostingRequest);
-	}
-	
-	@GetMapping
-	public DataResult<List<GetAllJobPostingResponse>> getAll(){
-		return this.jobPostingService.getAll();
 	}
 
 }

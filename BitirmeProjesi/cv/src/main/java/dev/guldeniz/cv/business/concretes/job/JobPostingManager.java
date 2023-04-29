@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.concretes;
+package dev.guldeniz.cv.business.concretes.job;
 
 import java.util.List;
 import java.util.stream.Collectors;
