@@ -3,6 +3,10 @@ package dev.guldeniz.cv.business.concretes;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.JobPositionService;
@@ -29,9 +33,9 @@ public class JobPositionManager implements JobPositionService {
 		List<JobPosition> positions = this.positionRepository.findAll();
 
 		List<GetAllJobPositionsResponse> responses = positions.stream()
-				.map(position -> this.modelMapperService.forResponse()
-						.map(position, GetAllJobPositionsResponse.class)).collect(Collectors.toList());
-		
+				.map(position -> this.modelMapperService.forResponse().map(position, GetAllJobPositionsResponse.class))
+				.collect(Collectors.toList());
+
 		return new SuccessDataResult<List<GetAllJobPositionsResponse>>(responses, "Data Listelendi");
 	}
 
@@ -44,19 +48,43 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public DataResult<JobPosition> getByPositionName(String positionName) {
-		//business codes
-		return new SuccessDataResult<JobPosition>(this.positionRepository.getByPositionName(positionName), "Data Listelendi");
+		// business codes
+		return new SuccessDataResult<JobPosition>(this.positionRepository.getByPositionName(positionName),
+				"Data Listelendi");
 
 	}
 
 	@Override
 	public DataResult<List<JobPosition>> getByPositionNameStartsWith(String positionName) {
-		return new SuccessDataResult<List<JobPosition>>(this.positionRepository.getByPositionNameStartsWith(positionName), "Data Listelendi");
+		return new SuccessDataResult<List<JobPosition>>(
+				this.positionRepository.getByPositionNameStartsWith(positionName), "Data Listelendi");
 	}
 
 	@Override
 	public DataResult<List<JobPosition>> getByPositionNameContains(String positionName) {
-		return new SuccessDataResult<List<JobPosition>>(this.positionRepository.getByPositionNameContains(positionName), "Data Listelendi");
+		return new SuccessDataResult<List<JobPosition>>(this.positionRepository.getByPositionNameContains(positionName),
+				"Data Listelendi");
 
+	}
+
+	@Override
+	public DataResult<List<GetAllJobPositionsResponse>> getAll(int pageNumber, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNumber-1, pageSize);
+		Page<JobPosition> pages = this.positionRepository.findAll(pageable);
+		List<GetAllJobPositionsResponse> responses = pages.stream()
+				.map(page -> this.modelMapperService.forResponse()
+						.map(page, GetAllJobPositionsResponse.class)).collect(Collectors.toList());
+		
+		return new SuccessDataResult<List<GetAllJobPositionsResponse>>(responses,"Data");
+	}
+
+	@Override
+	public DataResult<List<GetAllJobPositionsResponse>> getAllSorted() {
+		Sort sort = Sort.by(Sort.Direction.DESC, "positionName");
+		List<JobPosition> sorted = this.positionRepository.findAll(sort);
+		List<GetAllJobPositionsResponse> responses = sorted.stream()
+				.map(s -> this.modelMapperService.forResponse()
+						.map(s, GetAllJobPositionsResponse.class)).collect(Collectors.toList());
+		return new SuccessDataResult<List<GetAllJobPositionsResponse>>(responses,"Data Listelendi!");
 	}
 }

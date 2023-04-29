@@ -10,6 +10,10 @@ import dev.guldeniz.cv.entities.concretes.JobPosition;
 
 public interface JobPositionService {
 	DataResult<List<GetAllJobPositionsResponse>> getAll();
+	
+	DataResult<List<GetAllJobPositionsResponse>> getAllSorted();
+
+	DataResult<List<GetAllJobPositionsResponse>> getAll(int pageNumber, int pageSize);
 
 	Result add(CreateJobPositionRequest jobPositionRequest);
 

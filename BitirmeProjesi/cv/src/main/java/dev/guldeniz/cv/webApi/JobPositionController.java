@@ -36,4 +36,15 @@ public class JobPositionController {
 		return this.jobPositionService.getByPositionNameContains(positionName);
 	}
 	
+	@GetMapping("/pages")
+	DataResult<List<GetAllJobPositionsResponse>> getAll(int pageNumber, int pageSize){
+		return this.jobPositionService.getAll(pageNumber, pageSize);
+	}
+	
+	@GetMapping("/sortedlist")
+	DataResult<List<GetAllJobPositionsResponse>> getAllSorted(){
+		return this.jobPositionService.getAllSorted();
+	}
+
+	
 }

@@ -1,8 +1,11 @@
 package dev.guldeniz.cv.entities.concretes;
 
+import java.util.List;
+
 import dev.guldeniz.cv.entities.abstracts.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +29,8 @@ public class Employer extends User {
 
     @Column(name = "phone")
     private String phone;
+    
+    @OneToMany(mappedBy="employer")
+    private List<JobPosting> jobPostings;
 
 }
