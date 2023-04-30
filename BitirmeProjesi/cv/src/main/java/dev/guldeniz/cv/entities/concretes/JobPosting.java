@@ -40,7 +40,9 @@ public class JobPosting {
     @Column(name="open_position_count")
     private int openPositionCount;
     
-
+    @Column(name="publish_date")
+    private LocalDate publishDate;
+    
     @Column(name = "application_deadline")
     private LocalDate applicationDeadline;
 

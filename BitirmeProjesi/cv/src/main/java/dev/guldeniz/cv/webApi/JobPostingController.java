@@ -12,6 +12,7 @@ import dev.guldeniz.cv.business.requests.CreateJobPostingRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobPostingResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
+import dev.guldeniz.cv.entities.concretes.JobPosting;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -32,5 +33,10 @@ public class JobPostingController {
 	public Result add(@Valid CreateJobPostingRequest jobPostingRequest) {
 		return this.jobPostingService.add(jobPostingRequest);
 	}
+
+	@GetMapping("/isActive")
+    public DataResult<List<JobPosting>> findAllActiveJobPostings(){
+    	return this.jobPostingService.findAllActiveJobPostings();
+    }
 
 }

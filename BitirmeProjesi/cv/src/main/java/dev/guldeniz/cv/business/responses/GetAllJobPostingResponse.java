@@ -17,6 +17,7 @@ public class GetAllJobPostingResponse {
 	private int minSalary;
 	private int maxSalary;
 	private int openPositionCount;
+    private LocalDate publishDate;
 	private LocalDate applicationDeadline;
 	private boolean active;
 	private String positionName;

@@ -42,4 +42,9 @@ public class JobPostingManager implements JobPostingService {
 		return new SuccessDataResult<List<GetAllJobPostingResponse>>(responses, "Data Listelendi");
 	}
 
+	@Override
+	public DataResult<List<JobPosting>> findAllActiveJobPostings() {
+		return new SuccessDataResult<List<JobPosting>>(this.jobPositingRepository.findAllActiveJobPostings(),"DataListelendi");
+	}
+
 }

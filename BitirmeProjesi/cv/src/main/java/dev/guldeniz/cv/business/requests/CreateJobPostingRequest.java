@@ -30,7 +30,10 @@ public class CreateJobPostingRequest {
 	
 	@NotNull
 	private int openPositionCount;
-	
+
+	@NotNull
+    private LocalDate publishDate;
+
 	@NotNull
 	private LocalDate applicationDeadline;
 	
