@@ -17,9 +17,5 @@ public class CreateJobPositionRequest {
 	@NotNull
 	@NotBlank
 	private String positionName;
-	
-	@NotNull
-	@NotBlank
-	private String description;
 
 }

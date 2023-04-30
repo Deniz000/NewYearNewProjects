@@ -11,6 +11,5 @@ public class GetAllJobPositionsResponse {
 	
 		private Long id;
 	    private String positionName;
-	    private String description;
 	    
 }

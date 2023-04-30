@@ -47,7 +47,7 @@ public class JobPosting {
     private LocalDate applicationDeadline;
 
     @Column(name="is_active")
-    private boolean active;
+    private boolean isActive;
 
     @ManyToOne
     @JoinColumn(name = "job_position_id")
