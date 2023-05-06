@@ -14,6 +14,7 @@ import dev.guldeniz.cv.business.responses.GetAllJobPostingFilterResponse;
 import dev.guldeniz.cv.business.responses.GetAllJobPostingResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
+import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -58,5 +59,11 @@ public class JobPostingController {
     DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveAndCompanyName(String companyName){
 		return this.jobPostingService.findAllByIsActiveAndCompanyName(companyName);
 	}
+	@GetMapping("/getJ")
+	DataResult<List<JobPostingWithEmployerDto>> getJobPostingWithEmployerDetail(){
+		System.out.print("3");
+		return this.jobPostingService.getJobPostingWithEmployerDetail();
+	}
+
 
 }

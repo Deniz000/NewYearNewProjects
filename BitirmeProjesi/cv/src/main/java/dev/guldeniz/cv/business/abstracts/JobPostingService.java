@@ -7,6 +7,7 @@ import dev.guldeniz.cv.business.responses.GetAllJobPostingFilterResponse;
 import dev.guldeniz.cv.business.responses.GetAllJobPostingResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
+import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
 
 public interface JobPostingService {
 	Result add(CreateJobPostingRequest postingRequest);
@@ -17,7 +18,8 @@ public interface JobPostingService {
     DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateDesc();
     DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateAsc();
     DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveAndCompanyName(String companyName);
-    
+    DataResult<List<JobPostingWithEmployerDto>> getJobPostingWithEmployerDetail();
+
 
 	
 }
