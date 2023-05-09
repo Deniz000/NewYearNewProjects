@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.guldeniz.cv.business.abstracts.JobPositionService;
+import dev.guldeniz.cv.business.abstracts.job.JobPositionService;
 import dev.guldeniz.cv.business.requests.CreateJobPositionRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobPositionsResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
-import dev.guldeniz.cv.entities.concretes.JobPosition;
+import dev.guldeniz.cv.entities.concretes.job.JobPosition;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 

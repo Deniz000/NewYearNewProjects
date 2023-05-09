@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.entities.concretes;
+package dev.guldeniz.cv.entities.concretes.job;
 
 import java.util.List;
 

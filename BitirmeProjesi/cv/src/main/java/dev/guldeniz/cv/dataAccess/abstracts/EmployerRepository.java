@@ -2,7 +2,7 @@ package dev.guldeniz.cv.dataAccess.abstracts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import dev.guldeniz.cv.entities.concretes.Employer;
+import dev.guldeniz.cv.entities.concretes.employer.Employer;
 
 public interface EmployerRepository extends JpaRepository<Employer, Integer>{
 

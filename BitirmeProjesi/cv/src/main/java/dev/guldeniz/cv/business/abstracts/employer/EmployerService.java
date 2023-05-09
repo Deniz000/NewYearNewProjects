@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.abstracts;
+package dev.guldeniz.cv.business.abstracts.employer;
 
 import java.util.List;
 

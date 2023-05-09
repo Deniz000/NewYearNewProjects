@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import dev.guldeniz.cv.entities.concretes.JobPosition;
+import dev.guldeniz.cv.entities.concretes.job.JobPosition;
 
 public interface JobPositionRepository extends JpaRepository<JobPosition, Integer> {
 

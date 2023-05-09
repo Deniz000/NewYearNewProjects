@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import dev.guldeniz.cv.business.abstracts.JobPositionService;
+import dev.guldeniz.cv.business.abstracts.job.JobPositionService;
 import dev.guldeniz.cv.business.requests.CreateJobPositionRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobPositionsResponse;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
@@ -18,7 +18,7 @@ import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.core.results.SuccessDataResult;
 import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobPositionRepository;
-import dev.guldeniz.cv.entities.concretes.JobPosition;
+import dev.guldeniz.cv.entities.concretes.job.JobPosition;
 import lombok.AllArgsConstructor;
 
 @Service

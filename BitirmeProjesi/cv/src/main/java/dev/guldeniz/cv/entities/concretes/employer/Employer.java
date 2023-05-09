@@ -1,8 +1,9 @@
-package dev.guldeniz.cv.entities.concretes;
+package dev.guldeniz.cv.entities.concretes.employer;
 
 import java.util.List;
 
 import dev.guldeniz.cv.entities.abstracts.User;
+import dev.guldeniz.cv.entities.concretes.job.JobPosting;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;

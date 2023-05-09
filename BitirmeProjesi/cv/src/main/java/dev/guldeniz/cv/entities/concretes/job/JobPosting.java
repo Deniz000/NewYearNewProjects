@@ -1,7 +1,8 @@
-package dev.guldeniz.cv.entities.concretes;
+package dev.guldeniz.cv.entities.concretes.job;
 
 import java.time.LocalDate;
 
+import dev.guldeniz.cv.entities.concretes.employer.Employer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

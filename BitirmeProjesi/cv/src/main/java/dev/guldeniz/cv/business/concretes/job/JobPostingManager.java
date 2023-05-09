@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import dev.guldeniz.cv.business.abstracts.JobPostingService;
+import dev.guldeniz.cv.business.abstracts.job.JobPostingService;
 import dev.guldeniz.cv.business.requests.CreateJobPostingRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobPostingFilterResponse;
 import dev.guldeniz.cv.business.responses.GetAllJobPostingResponse;
@@ -15,7 +15,7 @@ import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.core.results.SuccessDataResult;
 import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobPostingRepository;
-import dev.guldeniz.cv.entities.concretes.JobPosting;
+import dev.guldeniz.cv.entities.concretes.job.JobPosting;
 import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
 import lombok.AllArgsConstructor;
 
@@ -44,17 +44,7 @@ public class JobPostingManager implements JobPostingService {
 		System.out.println(responses.get(0).getCompanyName());
 		return new SuccessDataResult<List<GetAllJobPostingResponse>>(responses, "Data Listelendi");
 	}
-//Sort ile sıralam yapıyor
-//	@Override
-//	public DataResult<List<GetAllJobPostingResponse>> getAllSorted() {
-//		Sort sort = Sort.by(Sort.Direction.DESC, "publishDate");
-//		List<JobPosting> postings = this.jobPositingRepository.findAll(sort);
-//		List<GetAllJobPostingResponse> responses = postings.stream()
-//				.map(p -> this.modelMapperService.forResponse().map(p, GetAllJobPostingResponse.class))
-//				.collect(Collectors.toList());
-//		System.out.println(responses.get(0).getCompanyName());
-//		return new SuccessDataResult<List<GetAllJobPostingResponse>>(responses, "Data Listelendi");
-//	}
+//	Sort sort = Sort.by(Sort.Direction.DESC, "publishDate");
 
 	@Override
 	public DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveTrue() {
@@ -118,7 +108,7 @@ public class JobPostingManager implements JobPostingService {
 	@Override
 	public DataResult<List<JobPostingWithEmployerDto>> getJobPostingWithEmployerDetail() {
 		System.out.print("1");
-		List<JobPosting> postings = this.jobPositingRepository.getJobPostingWithEmployerDetail();
+		List<JobPosting> postings = this.jobPositingRepository.findAll();
 		List<JobPostingWithEmployerDto> reponses = postings.stream()
 				.map(p -> this.modelMapperService.forResponse()
 						.map(p, JobPostingWithEmployerDto.class)).collect(Collectors.toList());

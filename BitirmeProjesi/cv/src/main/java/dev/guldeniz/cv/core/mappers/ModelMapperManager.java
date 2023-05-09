@@ -2,6 +2,7 @@ package dev.guldeniz.cv.core.mappers;
 
 import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.config.Configuration.AccessLevel;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,9 @@ public class ModelMapperManager implements ModelMapperService{
 		.setAmbiguityIgnored(true)
 		.setSkipNullEnabled(true)
 		.setPropertyCondition(Conditions.isNotNull())
-		.setMatchingStrategy(MatchingStrategies.STRICT);
+		.setMatchingStrategy(MatchingStrategies.STRICT)
+	    .setFieldMatchingEnabled(true)
+	    .setFieldAccessLevel(AccessLevel.PRIVATE);
 		return this.modelMapper;
 	}
 

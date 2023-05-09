@@ -7,8 +7,8 @@ import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.EmailService;
-import dev.guldeniz.cv.business.abstracts.EmployerService;
 import dev.guldeniz.cv.business.abstracts.SystemStaffService;
+import dev.guldeniz.cv.business.abstracts.employer.EmployerService;
 import dev.guldeniz.cv.business.requests.CreateEmployerRequest;
 import dev.guldeniz.cv.business.responses.GetAllEmployerResponse;
 import dev.guldeniz.cv.business.rules.EmployerBusinessRules;
@@ -18,7 +18,7 @@ import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.core.results.SuccessDataResult;
 import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.EmployerRepository;
-import dev.guldeniz.cv.entities.concretes.Employer;
+import dev.guldeniz.cv.entities.concretes.employer.Employer;
 import lombok.AllArgsConstructor;
 
 @Service

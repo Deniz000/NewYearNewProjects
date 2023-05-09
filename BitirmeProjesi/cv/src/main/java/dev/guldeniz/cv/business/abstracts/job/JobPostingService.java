@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.abstracts;
+package dev.guldeniz.cv.business.abstracts.job;
 
 import java.util.List;
 
@@ -19,7 +19,5 @@ public interface JobPostingService {
     DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateAsc();
     DataResult<List<GetAllJobPostingFilterResponse>> findAllByIsActiveAndCompanyName(String companyName);
     DataResult<List<JobPostingWithEmployerDto>> getJobPostingWithEmployerDetail();
-
-
 	
 }

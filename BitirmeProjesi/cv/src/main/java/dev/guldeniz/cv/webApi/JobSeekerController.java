@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.guldeniz.cv.business.abstracts.JobSeekerService;
+import dev.guldeniz.cv.business.abstracts.jobSeeker.JobSeekerService;
 import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobSeekerResponse;
 import dev.guldeniz.cv.core.results.DataResult;

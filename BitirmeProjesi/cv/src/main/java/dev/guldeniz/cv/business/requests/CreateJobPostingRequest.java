@@ -2,8 +2,8 @@ package dev.guldeniz.cv.business.requests;
 
 import java.time.LocalDate;
 
-import dev.guldeniz.cv.entities.concretes.Employer;
-import dev.guldeniz.cv.entities.concretes.JobPosition;
+import dev.guldeniz.cv.entities.concretes.employer.Employer;
+import dev.guldeniz.cv.entities.concretes.job.JobPosition;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

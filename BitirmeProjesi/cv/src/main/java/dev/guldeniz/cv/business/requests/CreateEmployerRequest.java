@@ -1,5 +1,6 @@
 package dev.guldeniz.cv.business.requests;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,27 +14,28 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateEmployerRequest {
 	
-	@NotNull(message = "company p")
+	@NotNull()
 	@NotBlank
 	private String companyName;
 
-	@NotNull(message = "web p")
+	@NotNull()
 	@NotBlank
 	private String webAddress;
 
-	@NotNull(message = "phone p")
+	@NotNull()
 	@NotBlank
     private String phone;
 	
-	@NotNull(message = "email p")
+	@NotNull()
 	@NotBlank
+	@Email
 	private String eMail;
 
-	@NotNull(message = "password")
+	@NotNull()
 	@NotBlank
 	private String password;
 	
-	@NotNull(message = "confirm p")
+	@NotNull()
 	@NotBlank
 	private String confirmPassword;
 	

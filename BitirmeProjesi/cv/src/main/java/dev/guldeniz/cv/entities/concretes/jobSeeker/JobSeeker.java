@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.entities.concretes;
+package dev.guldeniz.cv.entities.concretes.jobSeeker;
 
 import dev.guldeniz.cv.entities.abstracts.User;
 import jakarta.persistence.Column;

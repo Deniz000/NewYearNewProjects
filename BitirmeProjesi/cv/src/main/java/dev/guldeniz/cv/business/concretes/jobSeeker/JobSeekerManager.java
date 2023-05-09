@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.EmailService;
 import dev.guldeniz.cv.business.abstracts.IdentityValidationService;
-import dev.guldeniz.cv.business.abstracts.JobSeekerService;
+import dev.guldeniz.cv.business.abstracts.jobSeeker.JobSeekerService;
 import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
 import dev.guldeniz.cv.business.responses.GetAllJobSeekerResponse;
 import dev.guldeniz.cv.business.rules.JobSeekerBusinessRules;
@@ -18,7 +18,7 @@ import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.core.results.SuccessDataResult;
 import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobSeekerRepository;
-import dev.guldeniz.cv.entities.concretes.JobSeeker;
+import dev.guldeniz.cv.entities.concretes.jobSeeker.JobSeeker;
 import lombok.AllArgsConstructor;
 
 @Service

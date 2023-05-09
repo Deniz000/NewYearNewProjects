@@ -35,7 +35,7 @@ public class CreateJobSeekeerRequest {
 	private String eMail;
 
 	@NotNull
-	@NotBlank
+	@NotBlank 
 	private String password;
 
 	@NotNull
