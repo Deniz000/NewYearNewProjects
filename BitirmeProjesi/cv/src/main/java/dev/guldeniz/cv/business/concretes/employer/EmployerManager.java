@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import dev.guldeniz.cv.business.abstracts.EmailService;
 import dev.guldeniz.cv.business.abstracts.SystemStaffService;
 import dev.guldeniz.cv.business.abstracts.employer.EmployerService;
+import dev.guldeniz.cv.business.dtos.EmployerDto;
 import dev.guldeniz.cv.business.requests.CreateEmployerRequest;
-import dev.guldeniz.cv.business.responses.GetAllEmployerResponse;
 import dev.guldeniz.cv.business.rules.EmployerBusinessRules;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
 import dev.guldeniz.cv.core.results.DataResult;
@@ -34,12 +34,12 @@ public class EmployerManager implements EmployerService{
 	
 
 	@Override
-	public DataResult<List<GetAllEmployerResponse>> getAll() {
+	public DataResult<List<EmployerDto>> getAll() {
 		List<Employer> employers = this.employerRepository.findAll();
-		List<GetAllEmployerResponse> responses = employers.stream()
+		List<EmployerDto> responses = employers.stream()
 				.map(employer -> this.modelMapperService.forResponse()
-						.map(employer, GetAllEmployerResponse.class)).collect(Collectors.toList());
-		return new SuccessDataResult<List<GetAllEmployerResponse>>(
+						.map(employer, EmployerDto.class)).collect(Collectors.toList());
+		return new SuccessDataResult<List<EmployerDto>>(
 				responses,"Data Listelendi!");
 	}
 	

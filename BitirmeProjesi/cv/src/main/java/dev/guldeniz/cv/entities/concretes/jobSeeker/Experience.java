@@ -33,7 +33,8 @@ public class Experience {
 	@JoinColumn(name="job_seeker")
 	private JobSeeker jobSeeker;
 
-	@Column(name="employer_company")
+	@OneToOne
+	@JoinColumn(name="company_name")
 	private Employer companyName;
 	
 	@OneToOne

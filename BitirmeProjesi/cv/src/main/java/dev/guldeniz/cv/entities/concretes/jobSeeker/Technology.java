@@ -1,31 +1,31 @@
-package dev.guldeniz.cv.entities.concretes.job;
+package dev.guldeniz.cv.entities.concretes.jobSeeker;
 
-import dev.guldeniz.cv.entities.concretes.jobSeeker.Experience;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="work_types")
+@Table(name="technologies")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WorkType {
+public class Technology {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="work_type")
-	private String workType;
-	
-	@OneToOne
-	private Experience experience;
 
+	@Column(name="tachnology_name")
+	private String tehnology_name;
+
+	@OneToMany(mappedBy="technology")
+	private List<ProgrammingLanguage> languages;
 }

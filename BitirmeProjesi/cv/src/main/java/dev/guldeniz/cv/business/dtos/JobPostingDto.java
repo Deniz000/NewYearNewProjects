@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.responses;
+package dev.guldeniz.cv.business.dtos;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetAllJobPostingResponse {
+public class JobPostingDto {
 	private String jobDescription;
 	private String city;
 	private int minSalary;

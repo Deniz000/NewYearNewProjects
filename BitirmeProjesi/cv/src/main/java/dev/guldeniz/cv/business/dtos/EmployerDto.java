@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.responses;
+package dev.guldeniz.cv.business.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllEmployerResponse {
+public class EmployerDto {
 
 	private int id;
 	private String companyName;
