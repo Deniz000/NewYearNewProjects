@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.guldeniz.cv.business.abstracts.employer.EmployerService;
-import dev.guldeniz.cv.business.dtos.EmployerDto;
-import dev.guldeniz.cv.business.requests.CreateEmployerRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateEmployerRequest;
+import dev.guldeniz.cv.business.dtos.responses.EmployerResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.core.results.SuccessResult;
@@ -33,7 +33,7 @@ public class EmployerController {
 	}
 	
 	@GetMapping("/g")
-	public DataResult<List<EmployerDto>> getAll(){
+	public DataResult<List<EmployerResponse>> getAll(){
 		return this.employerService.getAll();
 	}
 }

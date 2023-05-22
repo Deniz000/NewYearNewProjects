@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.requests;
+package dev.guldeniz.cv.business.dtos.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

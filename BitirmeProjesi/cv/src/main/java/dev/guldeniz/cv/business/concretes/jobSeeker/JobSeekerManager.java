@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import dev.guldeniz.cv.business.abstracts.EmailService;
 import dev.guldeniz.cv.business.abstracts.IdentityValidationService;
 import dev.guldeniz.cv.business.abstracts.jobSeeker.JobSeekerService;
-import dev.guldeniz.cv.business.dtos.JobSeekerDto;
-import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateJobSeekeerRequest;
+import dev.guldeniz.cv.business.dtos.responses.JobSeekerResponse;
 import dev.guldeniz.cv.business.rules.JobSeekerBusinessRules;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
 import dev.guldeniz.cv.core.results.DataResult;
@@ -20,9 +20,11 @@ import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobSeekerRepository;
 import dev.guldeniz.cv.entities.concretes.jobSeeker.JobSeeker;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class JobSeekerManager implements JobSeekerService{
 	
 	private IdentityValidationService identityValidationService;
@@ -35,16 +37,16 @@ public class JobSeekerManager implements JobSeekerService{
 	
 
 	@Override
-	public DataResult<List<JobSeekerDto>> getAll() {
+	public DataResult<List<JobSeekerResponse>> getAll() {
 		
 		List<JobSeeker> seekers = this.jobSeekerRepository.findAll();
 		
-		List<JobSeekerDto> responses = seekers.stream()
+		List<JobSeekerResponse> responses = seekers.stream()
 				.map(jobSeeker -> this.modelMapperService.forResponse()
-				.map(jobSeeker, JobSeekerDto.class)).collect(Collectors.toList());
+				.map(jobSeeker, JobSeekerResponse.class)).collect(Collectors.toList());
 		
 
-		return new SuccessDataResult<List<JobSeekerDto>>(
+		return new SuccessDataResult<List<JobSeekerResponse>>(
 				responses,"Data Listelendi");
 	}
 	

@@ -10,8 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.job.JobPositionService;
-import dev.guldeniz.cv.business.dtos.JobPositionsDto;
-import dev.guldeniz.cv.business.requests.CreateJobPositionRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateJobPositionRequest;
+import dev.guldeniz.cv.business.dtos.responses.JobPositionsResponse;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
@@ -20,23 +20,25 @@ import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobPositionRepository;
 import dev.guldeniz.cv.entities.concretes.job.JobPosition;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class JobPositionManager implements JobPositionService {
 
 	private JobPositionRepository positionRepository;
 	private ModelMapperService modelMapperService;
 
 	@Override
-	public DataResult<List<JobPositionsDto>> getAll() {
+	public DataResult<List<JobPositionsResponse>> getAll() {
 		List<JobPosition> positions = this.positionRepository.findAll();
 
-		List<JobPositionsDto> responses = positions.stream()
-				.map(position -> this.modelMapperService.forResponse().map(position, JobPositionsDto.class))
+		List<JobPositionsResponse> responses = positions.stream()
+				.map(position -> this.modelMapperService.forResponse().map(position, JobPositionsResponse.class))
 				.collect(Collectors.toList());
 
-		return new SuccessDataResult<List<JobPositionsDto>>(responses, "Data Listelendi");
+		return new SuccessDataResult<List<JobPositionsResponse>>(responses, "Data Listelendi");
 	}
 
 	@Override
@@ -68,23 +70,23 @@ public class JobPositionManager implements JobPositionService {
 	}
 
 	@Override
-	public DataResult<List<JobPositionsDto>> getAll(int pageNumber, int pageSize) {
+	public DataResult<List<JobPositionsResponse>> getAll(int pageNumber, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNumber-1, pageSize);
 		Page<JobPosition> pages = this.positionRepository.findAll(pageable);
-		List<JobPositionsDto> responses = pages.stream()
+		List<JobPositionsResponse> responses = pages.stream()
 				.map(page -> this.modelMapperService.forResponse()
-						.map(page, JobPositionsDto.class)).collect(Collectors.toList());
+						.map(page, JobPositionsResponse.class)).collect(Collectors.toList());
 		
-		return new SuccessDataResult<List<JobPositionsDto>>(responses,"Data");
+		return new SuccessDataResult<List<JobPositionsResponse>>(responses,"Data");
 	}
 
 	@Override
-	public DataResult<List<JobPositionsDto>> getAllSorted() {
+	public DataResult<List<JobPositionsResponse>> getAllSorted() {
 		Sort sort = Sort.by(Sort.Direction.DESC, "positionName");
 		List<JobPosition> sorted = this.positionRepository.findAll(sort);
-		List<JobPositionsDto> responses = sorted.stream()
+		List<JobPositionsResponse> responses = sorted.stream()
 				.map(s -> this.modelMapperService.forResponse()
-						.map(s, JobPositionsDto.class)).collect(Collectors.toList());
-		return new SuccessDataResult<List<JobPositionsDto>>(responses,"Data Listelendi!");
+						.map(s, JobPositionsResponse.class)).collect(Collectors.toList());
+		return new SuccessDataResult<List<JobPositionsResponse>>(responses,"Data Listelendi!");
 	}
 }

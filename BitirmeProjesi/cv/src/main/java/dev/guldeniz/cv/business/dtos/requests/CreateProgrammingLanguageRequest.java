@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.requests;
+package dev.guldeniz.cv.business.dtos.requests;
 
 import dev.guldeniz.cv.entities.concretes.jobSeeker.Technology;
 import lombok.AllArgsConstructor;

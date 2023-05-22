@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.requests;
+package dev.guldeniz.cv.business.dtos.requests;
 
 import java.time.LocalDate;
 
@@ -9,23 +9,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateSchoolRequest {
+public class CreateExperienceRequest {
 
-	private int jobSeekerId;
-
-	private String schoolName;
-
-	private String department;
-
+	private Long id;
+	private int jobSeeker;
+	private String companyName;
+	private String jobPosition;
 	private LocalDate startDay;
-
 	private LocalDate endDay;
-
-	private float gradeAvarage;
-
 	private String description;
-
-	private String type;
-
-	private String adress;
+	private String city;
+	private String workType;
+	
 }

@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.dtos;
+package dev.guldeniz.cv.business.dtos.responses;
 
 import java.time.LocalDate;
 
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobPostingFilterDto {
+public class JobPostingFilterResponse {
 	
 	private String companyName;
 	private String positionName;

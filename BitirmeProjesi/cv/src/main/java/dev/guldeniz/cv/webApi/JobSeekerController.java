@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.guldeniz.cv.business.abstracts.jobSeeker.JobSeekerService;
-import dev.guldeniz.cv.business.dtos.JobSeekerDto;
-import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateJobSeekeerRequest;
+import dev.guldeniz.cv.business.dtos.responses.JobSeekerResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ public class JobSeekerController {
 	private JobSeekerService jobSeekerService;
 	
 	@GetMapping()
-	public DataResult<List<JobSeekerDto>> getAll(){
+	public DataResult<List<JobSeekerResponse>> getAll(){
 		return this.jobSeekerService.getAll();
 	}
 

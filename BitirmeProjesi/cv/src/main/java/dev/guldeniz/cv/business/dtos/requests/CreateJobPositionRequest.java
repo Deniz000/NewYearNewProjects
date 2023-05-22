@@ -1,4 +1,4 @@
-package dev.guldeniz.cv.business.requests;
+package dev.guldeniz.cv.business.dtos.requests;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

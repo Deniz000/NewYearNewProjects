@@ -27,8 +27,8 @@ public class School {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name = "job_seeker")
-	private JobSeeker jobSeeker;
+	@JoinColumn(name = "candidate")
+	private Candidate candidate;
 
 	@Column(name = "school_name")
 	private String schoolName;

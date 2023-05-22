@@ -2,6 +2,7 @@ package dev.guldeniz.cv.entities.concretes.jobSeeker;
 
 import java.util.List;
 
+import dev.guldeniz.cv.entities.concretes.languages.ProgrammingLanguage;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

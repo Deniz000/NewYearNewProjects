@@ -30,8 +30,8 @@ public class Experience {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name="job_seeker")
-	private JobSeeker jobSeeker;
+	@JoinColumn(name="candidate")
+	private Candidate candidate;
 
 	@OneToOne
 	@JoinColumn(name="company_name")

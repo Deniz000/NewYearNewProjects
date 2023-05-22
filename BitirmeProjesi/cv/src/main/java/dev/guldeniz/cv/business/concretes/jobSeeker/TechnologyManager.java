@@ -3,7 +3,7 @@ package dev.guldeniz.cv.business.concretes.jobSeeker;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.jobSeeker.TechnologyService;
-import dev.guldeniz.cv.business.requests.CreateTechnologyRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateTechnologyRequest;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
 import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.core.results.SuccessResult;

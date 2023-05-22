@@ -3,7 +3,7 @@ package dev.guldeniz.cv.adapters;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.IdentityValidationService;
-import dev.guldeniz.cv.business.requests.CreateJobSeekeerRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateJobSeekeerRequest;
 
 @Service
 public class MerniseServiceAdapter implements IdentityValidationService{

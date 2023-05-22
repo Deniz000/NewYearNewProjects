@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.guldeniz.cv.business.abstracts.job.JobPostingService;
-import dev.guldeniz.cv.business.dtos.JobPostingFilterDto;
-import dev.guldeniz.cv.business.dtos.JobPostingDto;
-import dev.guldeniz.cv.business.requests.CreateJobPostingRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateJobPostingRequest;
+import dev.guldeniz.cv.business.dtos.responses.JobPostingResponse;
+import dev.guldeniz.cv.business.dtos.responses.JobPostingFilterResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
@@ -27,7 +27,7 @@ public class JobPostingController {
 
 
 	@GetMapping()
-	public DataResult<List<JobPostingDto>> getAll(){
+	public DataResult<List<JobPostingResponse>> getAll(){
 		return this.jobPostingService.getAll();
 	}
 
@@ -42,21 +42,21 @@ public class JobPostingController {
 	}
 
 	@GetMapping("/isActive")
-    public DataResult<List<JobPostingFilterDto>> getAllActiveJobPostings(){
+    public DataResult<List<JobPostingFilterResponse>> getAllActiveJobPostings(){
 		return this.jobPostingService.findAllByIsActiveTrue();
     }
 
 	@GetMapping("/isActiveByDesc")
-    public DataResult<List<JobPostingFilterDto>> findAllByIsActiveTrueOrderByPublishDateDesc(){
+    public DataResult<List<JobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateDesc(){
 		return this.jobPostingService.findAllByIsActiveTrueOrderByPublishDateDesc();
     } 
 	
 	@GetMapping("/isActiveByAsc")
-    public DataResult<List<JobPostingFilterDto>> findAllByIsActiveTrueOrderByPublishDateAsc(){
+    public DataResult<List<JobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateAsc(){
 		return this.jobPostingService.findAllByIsActiveTrueOrderByPublishDateAsc();
     }
 	@GetMapping("/selectedCompany")
-    DataResult<List<JobPostingFilterDto>> findAllByIsActiveAndCompanyName(String companyName){
+    DataResult<List<JobPostingFilterResponse>> findAllByIsActiveAndCompanyName(String companyName){
 		return this.jobPostingService.findAllByIsActiveAndCompanyName(companyName);
 	}
 	@GetMapping("/getJ")

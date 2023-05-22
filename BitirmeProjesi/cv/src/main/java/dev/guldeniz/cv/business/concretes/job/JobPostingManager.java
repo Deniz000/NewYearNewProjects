@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.job.JobPostingService;
-import dev.guldeniz.cv.business.dtos.JobPostingFilterDto;
-import dev.guldeniz.cv.business.dtos.JobPostingDto;
-import dev.guldeniz.cv.business.requests.CreateJobPostingRequest;
+import dev.guldeniz.cv.business.dtos.requests.CreateJobPostingRequest;
+import dev.guldeniz.cv.business.dtos.responses.JobPostingResponse;
+import dev.guldeniz.cv.business.dtos.responses.JobPostingFilterResponse;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
@@ -18,9 +18,11 @@ import dev.guldeniz.cv.dataAccess.abstracts.JobPostingRepository;
 import dev.guldeniz.cv.entities.concretes.job.JobPosting;
 import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
+@NoArgsConstructor
 public class JobPostingManager implements JobPostingService {
 	
 	private JobPostingRepository jobPositingRepository;
@@ -36,63 +38,63 @@ public class JobPostingManager implements JobPostingService {
 	}
 
 	@Override
-	public DataResult<List<JobPostingDto>> getAll() {
+	public DataResult<List<JobPostingResponse>> getAll() {
 		List<JobPosting> postings = this.jobPositingRepository.findAll();
-		List<JobPostingDto> responses = postings.stream()
-				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingDto.class))
+		List<JobPostingResponse> responses = postings.stream()
+				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingResponse.class))
 				.collect(Collectors.toList());
 		System.out.println(responses.get(0).getCompanyName());
-		return new SuccessDataResult<List<JobPostingDto>>(responses, "Data Listelendi");
+		return new SuccessDataResult<List<JobPostingResponse>>(responses, "Data Listelendi");
 	}
 //	Sort sort = Sort.by(Sort.Direction.DESC, "publishDate");
 
 	@Override
-	public DataResult<List<JobPostingFilterDto>> findAllByIsActiveTrue() {
+	public DataResult<List<JobPostingFilterResponse>> findAllByIsActiveTrue() {
 		List<JobPosting> jobPostings = this.jobPositingRepository.findAllByIsActiveTrue();
 		;
-		List<JobPostingFilterDto> responses = jobPostings.stream()
-				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterDto.class))
+		List<JobPostingFilterResponse> responses = jobPostings.stream()
+				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterResponse.class))
 				.collect(Collectors.toList());
 
-		return new SuccessDataResult<List<JobPostingFilterDto>>(responses,
+		return new SuccessDataResult<List<JobPostingFilterResponse>>(responses,
 				"Active job postings are listed.");
 	}
 
 	@Override
-	public DataResult<List<JobPostingFilterDto>> findAllByIsActiveTrueOrderByPublishDateDesc() {
+	public DataResult<List<JobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateDesc() {
 		List<JobPosting> jobPostings = this.jobPositingRepository.findAllByIsActiveTrueOrderByPublishDateDesc();
-		List<JobPostingFilterDto> responses = jobPostings.stream()
-				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterDto.class))
+		List<JobPostingFilterResponse> responses = jobPostings.stream()
+				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterResponse.class))
 				.collect(Collectors.toList());
 
-		return new SuccessDataResult<List<JobPostingFilterDto>>(responses,
+		return new SuccessDataResult<List<JobPostingFilterResponse>>(responses,
 				"Active job postings are listed by desc.");
 	}
 
 	@Override
-	public DataResult<List<JobPostingFilterDto>> findAllByIsActiveTrueOrderByPublishDateAsc() {
+	public DataResult<List<JobPostingFilterResponse>> findAllByIsActiveTrueOrderByPublishDateAsc() {
 		List<JobPosting> jobPostings = this.jobPositingRepository.findAllByIsActiveTrueOrderByPublishDateAsc();
-		List<JobPostingFilterDto> responses = jobPostings.stream()
-				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterDto.class))
+		List<JobPostingFilterResponse> responses = jobPostings.stream()
+				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterResponse.class))
 				.collect(Collectors.toList());
 
-		return new SuccessDataResult<List<JobPostingFilterDto>>(responses,
+		return new SuccessDataResult<List<JobPostingFilterResponse>>(responses,
 				"Active job postings are listed by asc.");
 	}
 
 	@Override
-	public DataResult<List<JobPostingDto>> getAllSorted() {
+	public DataResult<List<JobPostingResponse>> getAllSorted() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public DataResult<List<JobPostingFilterDto>> findAllByIsActiveAndCompanyName(String companyName) {
+	public DataResult<List<JobPostingFilterResponse>> findAllByIsActiveAndCompanyName(String companyName) {
 		List<JobPosting> postings = this.jobPositingRepository.findAllByIsActiveAndCompanyName(companyName);
-		List<JobPostingFilterDto> responses = postings.stream()
-				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterDto.class))
+		List<JobPostingFilterResponse> responses = postings.stream()
+				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingFilterResponse.class))
 				.collect(Collectors.toList());
-		return new SuccessDataResult<List<JobPostingFilterDto>>(responses,
+		return new SuccessDataResult<List<JobPostingFilterResponse>>(responses,
 				"Şirketin aktif ilanları listelendi!");
 	}
 
