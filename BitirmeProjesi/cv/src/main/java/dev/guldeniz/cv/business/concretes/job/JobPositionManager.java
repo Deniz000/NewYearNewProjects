@@ -20,11 +20,9 @@ import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobPositionRepository;
 import dev.guldeniz.cv.entities.concretes.job.JobPosition;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class JobPositionManager implements JobPositionService {
 
 	private JobPositionRepository positionRepository;

@@ -2,9 +2,10 @@ package dev.guldeniz.cv.business.dtos.requests;
 
 import java.time.LocalDate;
 
-import dev.guldeniz.cv.entities.concretes.employer.Employer;
-import dev.guldeniz.cv.entities.concretes.job.JobPosition;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +18,11 @@ import lombok.Setter;
 public class CreateJobPostingRequest {
 
 	@NotNull
+	@Size(min=10)
 	private String jobDescription;
 
 	@NotNull
+	@Size(min=3)
 	private String city;
 
 	@NotNull
@@ -31,19 +34,21 @@ public class CreateJobPostingRequest {
 	@NotNull
 	private int openPositionCount;
 
-	@NotNull
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@NotNull(message="Yayın tarihini boş bırakamazsınız")
     private LocalDate publishDate;
 
-	@NotNull
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@NotNull(message="Deadline tarihini boş bırakamazsınız")
 	private LocalDate applicationDeadline;
 	
 	@NotNull
 	private boolean active;
 	
-	@NotNull
-	private JobPosition jobPosition;
+	@NotNull(message="Pozisyon alanı boş bırakılmamalı!")
+	private int jobPosition; 
 	
-	@NotNull
-	private Employer employer;
-
+	@NotNull(message="Şirket alanı boş bırakılmamalı!")
+	private int employer;
+//burada id'leri çözemedim. Null kaydoluyor :(
 }

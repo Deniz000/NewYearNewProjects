@@ -2,6 +2,8 @@ package dev.guldeniz.cv.webApi;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -10,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.guldeniz.cv.business.abstracts.job.JobPostingService;
 import dev.guldeniz.cv.business.dtos.requests.CreateJobPostingRequest;
-import dev.guldeniz.cv.business.dtos.responses.JobPostingResponse;
 import dev.guldeniz.cv.business.dtos.responses.JobPostingFilterResponse;
+import dev.guldeniz.cv.business.dtos.responses.JobPostingResponse;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
 import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
@@ -27,13 +29,15 @@ public class JobPostingController {
 
 
 	@GetMapping()
-	public DataResult<List<JobPostingResponse>> getAll(){
-		return this.jobPostingService.getAll();
+	public ResponseEntity<DataResult<List<JobPostingResponse>>> getAll(){
+		DataResult<List<JobPostingResponse>> response = this.jobPostingService.getAll();
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
 	@PostMapping()
-	public Result add(@Valid CreateJobPostingRequest jobPostingRequest) {
-		return this.jobPostingService.add(jobPostingRequest);
+	public ResponseEntity<Result> add(@Valid CreateJobPostingRequest jobPostingRequest) {
+		Result result = this.jobPostingService.add(jobPostingRequest);
+		return ResponseEntity.ok(result);
 	}
 	
 	@PutMapping("/deactivate")

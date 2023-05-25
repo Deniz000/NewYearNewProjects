@@ -27,7 +27,7 @@ public class ModelMapperManager implements ModelMapperService{
 	public ModelMapper forRequest() {
 		this.modelMapper.getConfiguration()
 		.setAmbiguityIgnored(true)
-		.setSkipNullEnabled(true)
+		.setSkipNullEnabled(true)     
 		.setPropertyCondition(Conditions.isNotNull())
 		.setMatchingStrategy(MatchingStrategies.STRICT)
 	    .setFieldMatchingEnabled(true)

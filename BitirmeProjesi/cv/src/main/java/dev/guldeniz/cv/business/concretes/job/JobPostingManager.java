@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.job.JobPostingService;
 import dev.guldeniz.cv.business.dtos.requests.CreateJobPostingRequest;
-import dev.guldeniz.cv.business.dtos.responses.JobPostingResponse;
 import dev.guldeniz.cv.business.dtos.responses.JobPostingFilterResponse;
+import dev.guldeniz.cv.business.dtos.responses.JobPostingResponse;
 import dev.guldeniz.cv.core.mappers.ModelMapperService;
 import dev.guldeniz.cv.core.results.DataResult;
 import dev.guldeniz.cv.core.results.Result;
@@ -18,11 +18,9 @@ import dev.guldeniz.cv.dataAccess.abstracts.JobPostingRepository;
 import dev.guldeniz.cv.entities.concretes.job.JobPosting;
 import dev.guldeniz.cv.entities.dtos.JobPostingWithEmployerDto;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class JobPostingManager implements JobPostingService {
 	
 	private JobPostingRepository jobPositingRepository;
@@ -30,7 +28,17 @@ public class JobPostingManager implements JobPostingService {
 
 	@Override
 	public Result add(CreateJobPostingRequest postingRequest) {
-
+//		PropertyMap<CreateJobPostingRequest, JobPosting> jobPostingMap = new PropertyMap<CreateJobPostingRequest, JobPosting>(){
+//
+//			@Override
+//			protected void configure() {
+//				//kullanıcıdan string name'ler gelecek burada da id ye çevirmemiz gerek 
+//				map().getEmployer().setCompanyName(source.getCompanyName());
+//				map().getJobPosition().setPositionName(source.getJobDescription());		
+//			}
+//		};
+//		this.modelMapperService.forRequest().addMappings(jobPostingMap);
+		
 		JobPosting jobPosting = this.modelMapperService.forRequest().map(postingRequest, JobPosting.class);
 		this.jobPositingRepository.save(jobPosting);
 

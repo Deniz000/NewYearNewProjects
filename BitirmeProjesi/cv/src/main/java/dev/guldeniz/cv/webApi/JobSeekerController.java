@@ -2,6 +2,8 @@ package dev.guldeniz.cv.webApi;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,16 +25,17 @@ public class JobSeekerController {
 	private JobSeekerService jobSeekerService;
 	
 	@GetMapping()
-	public DataResult<List<JobSeekerResponse>> getAll(){
-		return this.jobSeekerService.getAll();
+	public ResponseEntity<DataResult<List<JobSeekerResponse>>> getAll(){
+		DataResult<List<JobSeekerResponse>> all =  this.jobSeekerService.getAll();
+		return ResponseEntity.status(HttpStatus.OK).body(all);
 	}
 
 	@PostMapping("/register")
-	public Result add(@Valid CreateJobSeekeerRequest jobSeekerRequest) throws Exception {
+	public ResponseEntity<Result> add(@Valid CreateJobSeekeerRequest jobSeekerRequest) throws Exception {
 		if(!jobSeekerRequest.getPassword().equals(jobSeekerRequest.getConfirmPassword())) {
 			throw new RuntimeException("Şifreler Uyuşmuyor!");
 		}
-		
-		return this.jobSeekerService.add(jobSeekerRequest);
+		Result result = this.jobSeekerService.add(jobSeekerRequest);
+		return ResponseEntity.ok(result);
 	}
 }

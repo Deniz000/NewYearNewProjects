@@ -20,11 +20,9 @@ import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.JobSeekerRepository;
 import dev.guldeniz.cv.entities.concretes.jobSeeker.JobSeeker;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class JobSeekerManager implements JobSeekerService{
 	
 	private IdentityValidationService identityValidationService;

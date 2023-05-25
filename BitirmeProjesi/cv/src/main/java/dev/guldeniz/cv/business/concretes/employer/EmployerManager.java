@@ -20,11 +20,9 @@ import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.EmployerRepository;
 import dev.guldeniz.cv.entities.concretes.employer.Employer;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 public class EmployerManager implements EmployerService{
 
 	//private EmployerRepository employerRepository;
