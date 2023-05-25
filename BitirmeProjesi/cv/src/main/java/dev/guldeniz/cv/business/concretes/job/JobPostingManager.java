@@ -3,6 +3,7 @@ package dev.guldeniz.cv.business.concretes.job;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.job.JobPostingService;
@@ -28,17 +29,16 @@ public class JobPostingManager implements JobPostingService {
 
 	@Override
 	public Result add(CreateJobPostingRequest postingRequest) {
-//		PropertyMap<CreateJobPostingRequest, JobPosting> jobPostingMap = new PropertyMap<CreateJobPostingRequest, JobPosting>(){
-//
-//			@Override
-//			protected void configure() {
-//				//kullanıcıdan string name'ler gelecek burada da id ye çevirmemiz gerek 
-//				map().getEmployer().setCompanyName(source.getCompanyName());
-//				map().getJobPosition().setPositionName(source.getJobDescription());		
-//			}
-//		};
-//		this.modelMapperService.forRequest().addMappings(jobPostingMap);
-		
+		PropertyMap<CreateJobPostingRequest, JobPosting> job = new PropertyMap<CreateJobPostingRequest, JobPosting>(){
+
+			@Override
+			protected void configure() {
+				map().getJobPosition().setId(source.getJobPositionId());
+				map().getEmployer().setId(source.getEmployerId());
+				map().getCity().setId(source.getCityId());
+			}
+		};
+		this.modelMapperService.forRequest().addMappings(job);
 		JobPosting jobPosting = this.modelMapperService.forRequest().map(postingRequest, JobPosting.class);
 		this.jobPositingRepository.save(jobPosting);
 
@@ -47,11 +47,11 @@ public class JobPostingManager implements JobPostingService {
 
 	@Override
 	public DataResult<List<JobPostingResponse>> getAll() {
+		
 		List<JobPosting> postings = this.jobPositingRepository.findAll();
 		List<JobPostingResponse> responses = postings.stream()
 				.map(p -> this.modelMapperService.forResponse().map(p, JobPostingResponse.class))
 				.collect(Collectors.toList());
-		System.out.println(responses.get(0).getCompanyName());
 		return new SuccessDataResult<List<JobPostingResponse>>(responses, "Data Listelendi");
 	}
 //	Sort sort = Sort.by(Sort.Direction.DESC, "publishDate");

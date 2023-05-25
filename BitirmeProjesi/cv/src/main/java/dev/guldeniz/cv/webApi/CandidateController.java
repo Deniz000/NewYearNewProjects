@@ -25,8 +25,9 @@ public class CandidateController {
 	private CandidateService candidateService;
 	
 	@PostMapping 
-	public Result add(@Valid CreateCandidateRequest candidateRequest) {
-		return this.candidateService.add(candidateRequest);
+	public ResponseEntity<Result> add(@Valid CreateCandidateRequest candidateRequest) {
+		Result result =  this.candidateService.add(candidateRequest);
+		return ResponseEntity.ok(result);
 	}
 	
 	@GetMapping
@@ -34,6 +35,13 @@ public class CandidateController {
 		DataResult<List<CandidateResponse>> responses = this.candidateService.getAll();
 		return ResponseEntity.status(HttpStatus.OK).body(responses);
 	}
+	
+// şunların farkını anlamadım
+//	@GetMapping
+//	public DataResult<List<CandidateResponse>> getAll(){
+//		return this.candidateService.getAll();
+//		
+//	}
 	
 
 }

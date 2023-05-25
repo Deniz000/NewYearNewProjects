@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class CandidateResponse {
 
 	private int id;
-	private int jobSeekerId;
+	private String jobSeekerFirstName;
+	private String jobSeekerLastName;
 	private String coverLetter;
 	private String githubLink;
 	private String linkedInLink;
-	private String schoolName;
 }

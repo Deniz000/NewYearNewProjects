@@ -16,11 +16,9 @@ import dev.guldeniz.cv.core.results.SuccessResult;
 import dev.guldeniz.cv.dataAccess.abstracts.ExperienceRepository;
 import dev.guldeniz.cv.entities.concretes.jobSeeker.Experience;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @Service 
 @AllArgsConstructor
-@NoArgsConstructor
 public class ExperienceManager implements ExperienceService{
 
 	private ExperienceRepository experienceRepository;

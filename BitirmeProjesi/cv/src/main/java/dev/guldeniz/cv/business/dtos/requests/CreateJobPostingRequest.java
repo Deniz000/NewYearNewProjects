@@ -22,8 +22,7 @@ public class CreateJobPostingRequest {
 	private String jobDescription;
 
 	@NotNull
-	@Size(min=3)
-	private String city;
+	private int cityId;
 
 	@NotNull
 	private int minSalary;
@@ -46,9 +45,9 @@ public class CreateJobPostingRequest {
 	private boolean active;
 	
 	@NotNull(message="Pozisyon alanı boş bırakılmamalı!")
-	private int jobPosition; 
+	private int jobPositionId; 
 	
 	@NotNull(message="Şirket alanı boş bırakılmamalı!")
-	private int employer;
+	private int employerId;
 //burada id'leri çözemedim. Null kaydoluyor :(
 }

@@ -35,4 +35,6 @@ public class CreateCandidateRequest {
 	@NotNull
 	@NotBlank
 	private String schoolName;
+	
+	
 }

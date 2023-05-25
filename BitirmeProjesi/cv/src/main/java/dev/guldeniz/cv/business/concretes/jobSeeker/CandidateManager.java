@@ -3,6 +3,7 @@ package dev.guldeniz.cv.business.concretes.jobSeeker;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 import dev.guldeniz.cv.business.abstracts.jobSeeker.CandidateService;
@@ -26,6 +27,15 @@ public class CandidateManager implements CandidateService{
 	
 	@Override
 	public Result add(CreateCandidateRequest candaidateRequest) {
+		PropertyMap<CreateCandidateRequest, Candidate> candidateMap = new PropertyMap<CreateCandidateRequest, Candidate>(){
+
+			@Override
+			protected void configure() {
+				map().getJobSeeker().setId(source.getJobSeekerId());
+				
+			}
+		};
+		this.modelMapperService.forRequest().addMappings(candidateMap);
 		Candidate candidate = this.modelMapperService.forRequest().map(candaidateRequest, Candidate.class);
 		this.candidateRepository.save(candidate);
 		return new SuccessResult("Okayy");

@@ -1,14 +1,10 @@
 package dev.guldeniz.cv.entities.concretes;
 
-import dev.guldeniz.cv.entities.concretes.job.JobPosting;
-import dev.guldeniz.cv.entities.concretes.jobSeeker.Experience;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +24,4 @@ public class City {
 	@Column(name="city_name")
 	private String cityName;
 	
-	@OneToOne
-	private Experience experience;
-	
-	@ManyToOne
-	private JobPosting jobPosting;
 }

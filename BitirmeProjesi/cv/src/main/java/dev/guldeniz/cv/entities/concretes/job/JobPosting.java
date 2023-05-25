@@ -1,7 +1,6 @@
 package dev.guldeniz.cv.entities.concretes.job;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import dev.guldeniz.cv.entities.concretes.City;
 import dev.guldeniz.cv.entities.concretes.employer.Employer;
@@ -12,7 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,14 +25,14 @@ public class JobPosting {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-	private Long id;
+	private int id;
 
     @Column(name = "job_description")
     private String jobDescription;
 
     //Bu da bir class olabilir 
-    @OneToMany
-    private List<City> city;
+    @OneToOne
+    private City city;
     
     @Column(name="min_salary")
     private int minSalary;

@@ -9,14 +9,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExperienceResponse {
-	private int id;
-	private int jobSeekerId;
-	private String companyName;
-	private String jobPosition;
+public class SchoolResponse {
+
+	private int candidateId;
+	private String schoolName;
+	private String department;
 	private LocalDate startDay;
 	private LocalDate endDay;
+	private float gradeAvarage;
 	private String description;
-	private String city;
-	private String workType;
+	private String type;
+	private String address;
 }

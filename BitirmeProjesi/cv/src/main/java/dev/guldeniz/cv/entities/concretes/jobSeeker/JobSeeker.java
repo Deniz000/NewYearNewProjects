@@ -1,6 +1,7 @@
 package dev.guldeniz.cv.entities.concretes.jobSeeker;
 
 import dev.guldeniz.cv.entities.abstracts.User;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -21,7 +22,7 @@ import lombok.Setter;
 public class JobSeeker extends User {
 	
 
-	@OneToOne
+	@OneToOne(mappedBy="jobSeeker", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="cadidate_id")
 	private Candidate candidate;
 	

@@ -2,6 +2,7 @@ package dev.guldeniz.cv.entities.concretes.jobSeeker;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -43,12 +44,10 @@ public class Candidate {
     @Column(name="linkedIn")    
     private String linkedInLink;
 
-	@OneToMany
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<School> schools;
 	
-	@OneToMany
+	@OneToMany(mappedBy="candidate", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<Experience> experiences;
-    
-    
     
 }

@@ -22,7 +22,7 @@ public abstract class User {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private int id;
 
 	@Column(name="email", unique=true)
 	private String EMail;

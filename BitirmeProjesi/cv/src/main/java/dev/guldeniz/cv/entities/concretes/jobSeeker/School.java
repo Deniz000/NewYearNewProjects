@@ -56,7 +56,7 @@ public class School {
 		UNDERGRADUATE, GRADUATE, POSTGRADUATE
 	}
 
-	@Column(name = "adress")
-	private String adress;
+	@Column(name = "address")
+	private String address;
 
 }

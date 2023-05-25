@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class CreateExperienceRequest {
 
 	@NotNull
-	private int jobSeeker;
+	private int jobSeekerId;
 	
 	@NotNull
 	private int employerId;
