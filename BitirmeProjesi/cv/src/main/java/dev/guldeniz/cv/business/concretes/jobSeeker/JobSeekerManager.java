@@ -80,6 +80,6 @@ public class JobSeekerManager implements JobSeekerService{
 		jobSeeker.setVerified(true);
 		this.jobSeekerRepository.save(jobSeeker);
 		return new SuccessResult("Kayıt Başarılı!");
-	}
+	} 
 
 }

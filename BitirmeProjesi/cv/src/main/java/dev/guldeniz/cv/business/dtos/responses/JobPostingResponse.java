@@ -22,4 +22,6 @@ public class JobPostingResponse {
 	private boolean active;
 	private String positionName;
 	private String companyName;
+
+	
 }

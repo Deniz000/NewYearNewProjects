@@ -68,6 +68,7 @@ public class EmployerManager implements EmployerService{
 		    this.modelMapperService.forRequest().addMappings(employerMap);
 
 		Employer employer = this.modelMapperService.forRequest().map(employerRequest, Employer.class);
+		//propertymap içinde yapılabilir :
 		employer.setActive(true); 
 		employer.setVerified(true);
 		this.employerRepository.save(employer);
